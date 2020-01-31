@@ -69,8 +69,8 @@
   .title {
     justify-self: center;
     align-self: center;
-    margin-bottom: 20px;
-    font-size: 24px;
+    margin-bottom: 1.25rem;
+    font-size: 1.5rem;
     font-family: "Fira Code", sans-serif;
   }
 
@@ -109,20 +109,20 @@
   }
 
   .loader {
-    height: 25px;
-    width: 25px;
+    height: 1.5625rem;
+    width: 1.5625rem;
     border-radius: 50%;
     background-color: white;
     border: 1px solid #d8d8d840;
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 0.9375rem;
+    right: 0.9375rem;
     display: var(--shouldShow);
   }
 
   .loader--inner {
-    height: 23px;
-    width: 23px;
+    height: 1.4375rem;
+    width: 1.4375rem;
     border: 1px solid white;
     border-top: 1px solid #004dff;
     border-radius: 50%;
@@ -152,8 +152,8 @@
 
   .result__icon {
     border-radius: 50%;
-    width: 8px;
-    height: 8px;
+    width: 0.5rem;
+    height: 0.5rem;
     background-color: var(--backgroundColor);
   }
 
@@ -174,7 +174,9 @@
 <main>
   <div class="center">
     <div class="container">
-      <h1 class="title">Branch creator</h1>
+      <div class="title">
+        <h1>Branch creator</h1>
+      </div>
       <div class="search-box">
         <input
           placeholder="

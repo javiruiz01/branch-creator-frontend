@@ -362,7 +362,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (191:10) {#each searchResults as { fields }}
+    // (193:10) {#each searchResults as { fields }}
     function create_each_block(ctx) {
     	let li;
     	let div1;
@@ -382,14 +382,14 @@ var app = (function () {
     			div2 = element("div");
     			t1 = text(t1_value);
     			t2 = space();
-    			attr_dev(div0, "class", "result__icon svelte-12o2ck5");
+    			attr_dev(div0, "class", "result__icon svelte-14rytoh");
     			set_style(div0, "--backgroundColor", /*colors*/ ctx[4][/*fields*/ ctx[8]["system.workitemtype"]]);
-    			add_location(div0, file, 193, 16, 4000);
-    			add_location(div1, file, 192, 14, 3978);
-    			attr_dev(div2, "class", "result__title svelte-12o2ck5");
-    			add_location(div2, file, 197, 14, 4166);
-    			attr_dev(li, "class", "result svelte-12o2ck5");
-    			add_location(li, file, 191, 12, 3944);
+    			add_location(div0, file, 195, 16, 4068);
+    			add_location(div1, file, 194, 14, 4046);
+    			attr_dev(div2, "class", "result__title svelte-14rytoh");
+    			add_location(div2, file, 199, 14, 4234);
+    			attr_dev(li, "class", "result svelte-14rytoh");
+    			add_location(li, file, 193, 12, 4012);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -416,7 +416,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(191:10) {#each searchResults as { fields }}",
+    		source: "(193:10) {#each searchResults as { fields }}",
     		ctx
     	});
 
@@ -425,17 +425,18 @@ var app = (function () {
 
     function create_fragment(ctx) {
     	let main;
+    	let div5;
     	let div4;
-    	let div3;
+    	let div0;
     	let h1;
     	let t1;
-    	let div2;
+    	let div3;
     	let input;
     	let t2;
     	let span;
     	let t4;
+    	let div2;
     	let div1;
-    	let div0;
     	let t5;
     	let ul;
     	let dispose;
@@ -449,19 +450,20 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			main = element("main");
+    			div5 = element("div");
     			div4 = element("div");
-    			div3 = element("div");
+    			div0 = element("div");
     			h1 = element("h1");
     			h1.textContent = "Branch creator";
     			t1 = space();
-    			div2 = element("div");
+    			div3 = element("div");
     			input = element("input");
     			t2 = space();
     			span = element("span");
     			span.textContent = "Work Item Id";
     			t4 = space();
+    			div2 = element("div");
     			div1 = element("div");
-    			div0 = element("div");
     			t5 = space();
     			ul = element("ul");
 
@@ -469,48 +471,50 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(h1, "class", "title svelte-12o2ck5");
-    			add_location(h1, file, 176, 6, 3395);
+    			add_location(h1, file, 177, 8, 3464);
+    			attr_dev(div0, "class", "title svelte-14rytoh");
+    			add_location(div0, file, 176, 6, 3436);
     			attr_dev(input, "placeholder", "\n          ");
-    			attr_dev(input, "class", "input svelte-12o2ck5");
+    			attr_dev(input, "class", "input svelte-14rytoh");
     			attr_dev(input, "type", "text");
     			toggle_class(input, "dirty", !/*isEmpty*/ ctx[3]);
-    			add_location(input, file, 178, 8, 3472);
-    			attr_dev(span, "class", "input__label svelte-12o2ck5");
-    			add_location(span, file, 185, 8, 3639);
-    			attr_dev(div0, "class", "loader--inner svelte-12o2ck5");
-    			add_location(div0, file, 187, 10, 3775);
-    			attr_dev(div1, "class", "loader svelte-12o2ck5");
-    			set_style(div1, "--shouldShow", /*loading*/ ctx[1] ? "block" : "none");
-    			add_location(div1, file, 186, 8, 3694);
-    			attr_dev(ul, "class", "results scrollable-container svelte-12o2ck5");
-    			add_location(ul, file, 189, 8, 3828);
-    			attr_dev(div2, "class", "search-box svelte-12o2ck5");
-    			add_location(div2, file, 177, 6, 3439);
-    			attr_dev(div3, "class", "container svelte-12o2ck5");
-    			add_location(div3, file, 175, 4, 3365);
-    			attr_dev(div4, "class", "center svelte-12o2ck5");
-    			add_location(div4, file, 174, 2, 3340);
-    			add_location(main, file, 173, 0, 3331);
+    			add_location(input, file, 180, 8, 3540);
+    			attr_dev(span, "class", "input__label svelte-14rytoh");
+    			add_location(span, file, 187, 8, 3707);
+    			attr_dev(div1, "class", "loader--inner svelte-14rytoh");
+    			add_location(div1, file, 189, 10, 3843);
+    			attr_dev(div2, "class", "loader svelte-14rytoh");
+    			set_style(div2, "--shouldShow", /*loading*/ ctx[1] ? "block" : "none");
+    			add_location(div2, file, 188, 8, 3762);
+    			attr_dev(ul, "class", "results scrollable-container svelte-14rytoh");
+    			add_location(ul, file, 191, 8, 3896);
+    			attr_dev(div3, "class", "search-box svelte-14rytoh");
+    			add_location(div3, file, 179, 6, 3507);
+    			attr_dev(div4, "class", "container svelte-14rytoh");
+    			add_location(div4, file, 175, 4, 3406);
+    			attr_dev(div5, "class", "center svelte-14rytoh");
+    			add_location(div5, file, 174, 2, 3381);
+    			add_location(main, file, 173, 0, 3372);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, main, anchor);
-    			append_dev(main, div4);
+    			append_dev(main, div5);
+    			append_dev(div5, div4);
+    			append_dev(div4, div0);
+    			append_dev(div0, h1);
+    			append_dev(div4, t1);
     			append_dev(div4, div3);
-    			append_dev(div3, h1);
-    			append_dev(div3, t1);
+    			append_dev(div3, input);
+    			append_dev(div3, t2);
+    			append_dev(div3, span);
+    			append_dev(div3, t4);
     			append_dev(div3, div2);
-    			append_dev(div2, input);
-    			append_dev(div2, t2);
-    			append_dev(div2, span);
-    			append_dev(div2, t4);
     			append_dev(div2, div1);
-    			append_dev(div1, div0);
-    			append_dev(div2, t5);
-    			append_dev(div2, ul);
+    			append_dev(div3, t5);
+    			append_dev(div3, ul);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(ul, null);
@@ -525,7 +529,7 @@ var app = (function () {
     			}
 
     			if (dirty & /*loading*/ 2) {
-    				set_style(div1, "--shouldShow", /*loading*/ ctx[1] ? "block" : "none");
+    				set_style(div2, "--shouldShow", /*loading*/ ctx[1] ? "block" : "none");
     			}
 
     			if (dirty & /*searchResults, colors*/ 20) {

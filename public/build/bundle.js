@@ -78,6 +78,17 @@ var app = (function () {
     function set_current_component(component) {
         current_component = component;
     }
+    function get_current_component() {
+        if (!current_component)
+            throw new Error(`Function called outside component initialization`);
+        return current_component;
+    }
+    function beforeUpdate(fn) {
+        get_current_component().$$.before_update.push(fn);
+    }
+    function afterUpdate(fn) {
+        get_current_component().$$.after_update.push(fn);
+    }
 
     const dirty_components = [];
     const binding_callbacks = [];
@@ -347,14 +358,88 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[5] = list[i].fields;
+    	child_ctx[8] = list[i].fields;
     	return child_ctx;
     }
 
-    // (170:6) {#if !isEmpty}
-    function create_if_block(ctx) {
+    // (191:10) {#each searchResults as { fields }}
+    function create_each_block(ctx) {
+    	let li;
+    	let div1;
+    	let div0;
+    	let t0;
+    	let div2;
+    	let t1_value = /*fields*/ ctx[8]["system.title"] + "";
+    	let t1;
+    	let t2;
+
+    	const block = {
+    		c: function create() {
+    			li = element("li");
+    			div1 = element("div");
+    			div0 = element("div");
+    			t0 = space();
+    			div2 = element("div");
+    			t1 = text(t1_value);
+    			t2 = space();
+    			attr_dev(div0, "class", "result__icon svelte-12o2ck5");
+    			set_style(div0, "--backgroundColor", /*colors*/ ctx[4][/*fields*/ ctx[8]["system.workitemtype"]]);
+    			add_location(div0, file, 193, 16, 4000);
+    			add_location(div1, file, 192, 14, 3978);
+    			attr_dev(div2, "class", "result__title svelte-12o2ck5");
+    			add_location(div2, file, 197, 14, 4166);
+    			attr_dev(li, "class", "result svelte-12o2ck5");
+    			add_location(li, file, 191, 12, 3944);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, li, anchor);
+    			append_dev(li, div1);
+    			append_dev(div1, div0);
+    			append_dev(li, t0);
+    			append_dev(li, div2);
+    			append_dev(div2, t1);
+    			append_dev(li, t2);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*searchResults*/ 4) {
+    				set_style(div0, "--backgroundColor", /*colors*/ ctx[4][/*fields*/ ctx[8]["system.workitemtype"]]);
+    			}
+
+    			if (dirty & /*searchResults*/ 4 && t1_value !== (t1_value = /*fields*/ ctx[8]["system.title"] + "")) set_data_dev(t1, t1_value);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(li);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block.name,
+    		type: "each",
+    		source: "(191:10) {#each searchResults as { fields }}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment(ctx) {
+    	let main;
+    	let div4;
+    	let div3;
+    	let h1;
+    	let t1;
+    	let div2;
+    	let input;
+    	let t2;
+    	let span;
+    	let t4;
+    	let div1;
+    	let div0;
+    	let t5;
     	let ul;
-    	let each_value = /*searchResults*/ ctx[0];
+    	let dispose;
+    	let each_value = /*searchResults*/ ctx[2];
     	let each_blocks = [];
 
     	for (let i = 0; i < each_value.length; i += 1) {
@@ -363,25 +448,88 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
+    			main = element("main");
+    			div4 = element("div");
+    			div3 = element("div");
+    			h1 = element("h1");
+    			h1.textContent = "Branch creator";
+    			t1 = space();
+    			div2 = element("div");
+    			input = element("input");
+    			t2 = space();
+    			span = element("span");
+    			span.textContent = "Work Item Id";
+    			t4 = space();
+    			div1 = element("div");
+    			div0 = element("div");
+    			t5 = space();
     			ul = element("ul");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(ul, "class", "results scrollable-container svelte-1jb70lg");
-    			add_location(ul, file, 170, 8, 3305);
+    			attr_dev(h1, "class", "title svelte-12o2ck5");
+    			add_location(h1, file, 176, 6, 3395);
+    			attr_dev(input, "placeholder", "\n          ");
+    			attr_dev(input, "class", "input svelte-12o2ck5");
+    			attr_dev(input, "type", "text");
+    			toggle_class(input, "dirty", !/*isEmpty*/ ctx[3]);
+    			add_location(input, file, 178, 8, 3472);
+    			attr_dev(span, "class", "input__label svelte-12o2ck5");
+    			add_location(span, file, 185, 8, 3639);
+    			attr_dev(div0, "class", "loader--inner svelte-12o2ck5");
+    			add_location(div0, file, 187, 10, 3775);
+    			attr_dev(div1, "class", "loader svelte-12o2ck5");
+    			set_style(div1, "--shouldShow", /*loading*/ ctx[1] ? "block" : "none");
+    			add_location(div1, file, 186, 8, 3694);
+    			attr_dev(ul, "class", "results scrollable-container svelte-12o2ck5");
+    			add_location(ul, file, 189, 8, 3828);
+    			attr_dev(div2, "class", "search-box svelte-12o2ck5");
+    			add_location(div2, file, 177, 6, 3439);
+    			attr_dev(div3, "class", "container svelte-12o2ck5");
+    			add_location(div3, file, 175, 4, 3365);
+    			attr_dev(div4, "class", "center svelte-12o2ck5");
+    			add_location(div4, file, 174, 2, 3340);
+    			add_location(main, file, 173, 0, 3331);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, ul, anchor);
+    			insert_dev(target, main, anchor);
+    			append_dev(main, div4);
+    			append_dev(div4, div3);
+    			append_dev(div3, h1);
+    			append_dev(div3, t1);
+    			append_dev(div3, div2);
+    			append_dev(div2, input);
+    			append_dev(div2, t2);
+    			append_dev(div2, span);
+    			append_dev(div2, t4);
+    			append_dev(div2, div1);
+    			append_dev(div1, div0);
+    			append_dev(div2, t5);
+    			append_dev(div2, ul);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(ul, null);
     			}
+
+    			/*ul_binding*/ ctx[7](ul);
+    			dispose = listen_dev(input, "input", /*handleChange*/ ctx[5], false, false, false);
     		},
-    		p: function update(ctx, dirty) {
-    			if (dirty & /*searchResults, colors*/ 9) {
-    				each_value = /*searchResults*/ ctx[0];
+    		p: function update(ctx, [dirty]) {
+    			if (dirty & /*isEmpty*/ 8) {
+    				toggle_class(input, "dirty", !/*isEmpty*/ ctx[3]);
+    			}
+
+    			if (dirty & /*loading*/ 2) {
+    				set_style(div1, "--shouldShow", /*loading*/ ctx[1] ? "block" : "none");
+    			}
+
+    			if (dirty & /*searchResults, colors*/ 20) {
+    				each_value = /*searchResults*/ ctx[2];
     				let i;
 
     				for (i = 0; i < each_value.length; i += 1) {
@@ -403,179 +551,12 @@ var app = (function () {
     				each_blocks.length = each_value.length;
     			}
     		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(ul);
-    			destroy_each(each_blocks, detaching);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_if_block.name,
-    		type: "if",
-    		source: "(170:6) {#if !isEmpty}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (172:10) {#each searchResults as { fields }}
-    function create_each_block(ctx) {
-    	let li;
-    	let div1;
-    	let div0;
-    	let t0;
-    	let div2;
-    	let t1_value = /*fields*/ ctx[5]["system.title"] + "";
-    	let t1;
-    	let t2;
-
-    	const block = {
-    		c: function create() {
-    			li = element("li");
-    			div1 = element("div");
-    			div0 = element("div");
-    			t0 = space();
-    			div2 = element("div");
-    			t1 = text(t1_value);
-    			t2 = space();
-    			attr_dev(div0, "class", "result__icon svelte-1jb70lg");
-    			set_style(div0, "--backgroundColor", /*colors*/ ctx[3][/*fields*/ ctx[5]["system.workitemtype"]]);
-    			add_location(div0, file, 174, 16, 3461);
-    			add_location(div1, file, 173, 14, 3439);
-    			attr_dev(div2, "class", "result__title svelte-1jb70lg");
-    			add_location(div2, file, 178, 14, 3627);
-    			attr_dev(li, "class", "result svelte-1jb70lg");
-    			add_location(li, file, 172, 12, 3405);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, li, anchor);
-    			append_dev(li, div1);
-    			append_dev(div1, div0);
-    			append_dev(li, t0);
-    			append_dev(li, div2);
-    			append_dev(div2, t1);
-    			append_dev(li, t2);
-    		},
-    		p: function update(ctx, dirty) {
-    			if (dirty & /*searchResults*/ 1) {
-    				set_style(div0, "--backgroundColor", /*colors*/ ctx[3][/*fields*/ ctx[5]["system.workitemtype"]]);
-    			}
-
-    			if (dirty & /*searchResults*/ 1 && t1_value !== (t1_value = /*fields*/ ctx[5]["system.title"] + "")) set_data_dev(t1, t1_value);
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(li);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_each_block.name,
-    		type: "each",
-    		source: "(172:10) {#each searchResults as { fields }}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    function create_fragment(ctx) {
-    	let main;
-    	let div4;
-    	let div3;
-    	let div2;
-    	let input;
-    	let t0;
-    	let span;
-    	let t2;
-    	let div1;
-    	let div0;
-    	let t3;
-    	let dispose;
-    	let if_block = !/*isEmpty*/ ctx[2] && create_if_block(ctx);
-
-    	const block = {
-    		c: function create() {
-    			main = element("main");
-    			div4 = element("div");
-    			div3 = element("div");
-    			div2 = element("div");
-    			input = element("input");
-    			t0 = space();
-    			span = element("span");
-    			span.textContent = "Work Item Id";
-    			t2 = space();
-    			div1 = element("div");
-    			div0 = element("div");
-    			t3 = space();
-    			if (if_block) if_block.c();
-    			attr_dev(input, "placeholder", "\n          ");
-    			attr_dev(input, "class", "input svelte-1jb70lg");
-    			attr_dev(input, "type", "text");
-    			toggle_class(input, "dirty", !/*isEmpty*/ ctx[2]);
-    			add_location(input, file, 156, 8, 2950);
-    			attr_dev(span, "class", "input__label svelte-1jb70lg");
-    			add_location(span, file, 163, 8, 3117);
-    			attr_dev(div0, "class", "loader--inner svelte-1jb70lg");
-    			add_location(div0, file, 165, 10, 3217);
-    			attr_dev(div1, "class", "loader svelte-1jb70lg");
-    			toggle_class(div1, "loading", /*loading*/ ctx[1]);
-    			add_location(div1, file, 164, 8, 3172);
-    			attr_dev(div2, "class", "search-box svelte-1jb70lg");
-    			add_location(div2, file, 155, 6, 2917);
-    			attr_dev(div3, "class", "container svelte-1jb70lg");
-    			add_location(div3, file, 154, 4, 2887);
-    			attr_dev(div4, "class", "center svelte-1jb70lg");
-    			add_location(div4, file, 153, 2, 2862);
-    			add_location(main, file, 152, 0, 2853);
-    		},
-    		l: function claim(nodes) {
-    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, main, anchor);
-    			append_dev(main, div4);
-    			append_dev(div4, div3);
-    			append_dev(div3, div2);
-    			append_dev(div2, input);
-    			append_dev(div2, t0);
-    			append_dev(div2, span);
-    			append_dev(div2, t2);
-    			append_dev(div2, div1);
-    			append_dev(div1, div0);
-    			append_dev(div3, t3);
-    			if (if_block) if_block.m(div3, null);
-    			dispose = listen_dev(input, "input", /*handleChange*/ ctx[4], false, false, false);
-    		},
-    		p: function update(ctx, [dirty]) {
-    			if (dirty & /*isEmpty*/ 4) {
-    				toggle_class(input, "dirty", !/*isEmpty*/ ctx[2]);
-    			}
-
-    			if (dirty & /*loading*/ 2) {
-    				toggle_class(div1, "loading", /*loading*/ ctx[1]);
-    			}
-
-    			if (!/*isEmpty*/ ctx[2]) {
-    				if (if_block) {
-    					if_block.p(ctx, dirty);
-    				} else {
-    					if_block = create_if_block(ctx);
-    					if_block.c();
-    					if_block.m(div3, null);
-    				}
-    			} else if (if_block) {
-    				if_block.d(1);
-    				if_block = null;
-    			}
-    		},
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(main);
-    			if (if_block) if_block.d();
+    			destroy_each(each_blocks, detaching);
+    			/*ul_binding*/ ctx[7](null);
     			dispose();
     		}
     	};
@@ -606,12 +587,24 @@ var app = (function () {
     		"User Story": "rgb(0, 156, 204)"
     	};
 
-    	let searchResults = [];
+    	let autoscroll;
+    	let div;
     	let loading;
+    	let searchResults = [];
+
+    	beforeUpdate(() => {
+    		autoscroll = div && div.offsetHeight + div.scrollTop > div.scrollHeight;
+    	});
+
+    	afterUpdate(() => {
+    		if (autoscroll) {
+    			div.scrollTo(0, div.scrollHeight);
+    		}
+    	});
 
     	async function handleChange({ target: { value } }) {
     		if (!value) {
-    			$$invalidate(0, searchResults = []);
+    			$$invalidate(2, searchResults = []);
     			$$invalidate(1, loading = false);
     			return;
     		}
@@ -619,7 +612,13 @@ var app = (function () {
     		$$invalidate(1, loading = true);
     		const { results } = await searchAzure(value);
     		$$invalidate(1, loading = false);
-    		$$invalidate(0, searchResults = results);
+    		$$invalidate(2, searchResults = results);
+    	}
+
+    	function ul_binding($$value) {
+    		binding_callbacks[$$value ? "unshift" : "push"](() => {
+    			$$invalidate(0, div = $$value);
+    		});
     	}
 
     	$$self.$capture_state = () => {
@@ -627,20 +626,31 @@ var app = (function () {
     	};
 
     	$$self.$inject_state = $$props => {
-    		if ("searchResults" in $$props) $$invalidate(0, searchResults = $$props.searchResults);
+    		if ("autoscroll" in $$props) autoscroll = $$props.autoscroll;
+    		if ("div" in $$props) $$invalidate(0, div = $$props.div);
     		if ("loading" in $$props) $$invalidate(1, loading = $$props.loading);
-    		if ("isEmpty" in $$props) $$invalidate(2, isEmpty = $$props.isEmpty);
+    		if ("searchResults" in $$props) $$invalidate(2, searchResults = $$props.searchResults);
+    		if ("isEmpty" in $$props) $$invalidate(3, isEmpty = $$props.isEmpty);
     	};
 
     	let isEmpty;
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*searchResults*/ 1) {
-    			 $$invalidate(2, isEmpty = searchResults.length === 0);
+    		if ($$self.$$.dirty & /*searchResults*/ 4) {
+    			 $$invalidate(3, isEmpty = searchResults.length === 0);
     		}
     	};
 
-    	return [searchResults, loading, isEmpty, colors, handleChange];
+    	return [
+    		div,
+    		loading,
+    		searchResults,
+    		isEmpty,
+    		colors,
+    		handleChange,
+    		autoscroll,
+    		ul_binding
+    	];
     }
 
     class App extends SvelteComponentDev {

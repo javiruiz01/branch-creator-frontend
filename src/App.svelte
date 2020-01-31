@@ -1,5 +1,6 @@
 <script>
   import { searchAzure } from "./azure.service";
+  import { beforeUpdate, afterUpdate } from "svelte";
 
   const colors = {
     Bug: "rgb(204, 41, 61)",
@@ -15,9 +16,22 @@
     "User Story": "rgb(0, 156, 204)"
   };
 
-  let searchResults = [];
+  let autoscroll;
+  let div;
   let loading;
+  let searchResults = [];
   $: isEmpty = searchResults.length === 0;
+
+  beforeUpdate(() => {
+    autoscroll = div && div.offsetHeight + div.scrollTop > div.scrollHeight;
+  });
+
+  afterUpdate(() => {
+    if (autoscroll) {
+      div.scrollTo(0, div.scrollHeight);
+    }
+  });
+
   async function handleChange({ target: { value } }) {
     if (!value) {
       searchResults = [];
@@ -42,12 +56,22 @@
   }
 
   .container {
+    justify-content: center;
     display: flex;
     flex-direction: column;
     width: 75%;
+    height: 100%;
     max-width: 43.75rem;
     min-width: 18.75rem;
     position: relative;
+  }
+
+  .title {
+    justify-self: center;
+    align-self: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-family: "Fira Code", sans-serif;
   }
 
   .search-box {
@@ -84,12 +108,7 @@
     pointer-events: none;
   }
 
-  .loading {
-    display: block;
-  }
-
   .loader {
-    display: none;
     height: 25px;
     width: 25px;
     border-radius: 50%;
@@ -98,6 +117,7 @@
     position: absolute;
     top: 15px;
     right: 15px;
+    display: var(--shouldShow);
   }
 
   .loader--inner {
@@ -113,8 +133,9 @@
     top: 4.0625rem;
     background-color: #d8d8d840;
     border-radius: 4px;
-    max-height: 23.4375rem;
-    overflow-y: scroll;
+    max-height: 18.75rem;
+    overflow-y: auto;
+    width: 100%;
   }
 
   .result {
@@ -153,6 +174,7 @@
 <main>
   <div class="center">
     <div class="container">
+      <h1 class="title">Branch creator</h1>
       <div class="search-box">
         <input
           placeholder="
@@ -162,13 +184,10 @@
           on:input={handleChange}
           type="text" />
         <span class="input__label">Work Item Id</span>
-        <div class="loader" class:loading>
+        <div class="loader" style="--shouldShow:{loading ? 'block' : 'none'}">
           <div class="loader--inner" />
         </div>
-      </div>
-
-      {#if !isEmpty}
-        <ul class="results scrollable-container">
+        <ul class="results scrollable-container" bind:this={div}>
           {#each searchResults as { fields }}
             <li class="result">
               <div>
@@ -180,7 +199,8 @@
             </li>
           {/each}
         </ul>
-      {/if}
+      </div>
+
     </div>
   </div>
 </main>

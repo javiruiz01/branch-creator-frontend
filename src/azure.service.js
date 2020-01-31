@@ -1,7 +1,7 @@
 const apiUrl = `https://almsearch.dev.azure.com/payvision/Warriors/_apis/search/workitemsearchresults?api-version=5.1-preview.1`;
 const basicFields = {
   $skip: 0,
-  $top: 10,
+  $top: 20,
   filters: null,
   $orderBy: [
     {

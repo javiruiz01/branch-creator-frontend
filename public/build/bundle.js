@@ -62,6 +62,9 @@ var app = (function () {
     function children(element) {
         return Array.from(element.childNodes);
     }
+    function set_style(node, key, value, important) {
+        node.style.setProperty(key, value, important ? 'important' : '');
+    }
     function toggle_class(element, name, toggle) {
         element.classList[toggle ? 'add' : 'remove'](name);
     }
@@ -311,7 +314,7 @@ var app = (function () {
     const apiUrl = `https://almsearch.dev.azure.com/payvision/Warriors/_apis/search/workitemsearchresults?api-version=5.1-preview.1`;
     const basicFields = {
       $skip: 0,
-      $top: 10,
+      $top: 20,
       filters: null,
       $orderBy: [
         {
@@ -344,11 +347,11 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[3] = list[i].fields;
+    	child_ctx[5] = list[i].fields;
     	return child_ctx;
     }
 
-    // (98:6) {#if !isEmpty}
+    // (170:6) {#if !isEmpty}
     function create_if_block(ctx) {
     	let ul;
     	let each_value = /*searchResults*/ ctx[0];
@@ -366,8 +369,8 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(ul, "class", "results svelte-1rrf3ba");
-    			add_location(ul, file, 98, 8, 1897);
+    			attr_dev(ul, "class", "results scrollable-container svelte-1jb70lg");
+    			add_location(ul, file, 170, 8, 3305);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, ul, anchor);
@@ -377,7 +380,7 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*searchResults*/ 1) {
+    			if (dirty & /*searchResults, colors*/ 9) {
     				each_value = /*searchResults*/ ctx[0];
     				let i;
 
@@ -410,32 +413,57 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(98:6) {#if !isEmpty}",
+    		source: "(170:6) {#if !isEmpty}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (100:10) {#each searchResults as { fields }}
+    // (172:10) {#each searchResults as { fields }}
     function create_each_block(ctx) {
     	let li;
-    	let t_value = /*fields*/ ctx[3]["system.title"] + "";
-    	let t;
+    	let div1;
+    	let div0;
+    	let t0;
+    	let div2;
+    	let t1_value = /*fields*/ ctx[5]["system.title"] + "";
+    	let t1;
+    	let t2;
 
     	const block = {
     		c: function create() {
     			li = element("li");
-    			t = text(t_value);
-    			attr_dev(li, "class", "result");
-    			add_location(li, file, 100, 12, 1976);
+    			div1 = element("div");
+    			div0 = element("div");
+    			t0 = space();
+    			div2 = element("div");
+    			t1 = text(t1_value);
+    			t2 = space();
+    			attr_dev(div0, "class", "result__icon svelte-1jb70lg");
+    			set_style(div0, "--backgroundColor", /*colors*/ ctx[3][/*fields*/ ctx[5]["system.workitemtype"]]);
+    			add_location(div0, file, 174, 16, 3461);
+    			add_location(div1, file, 173, 14, 3439);
+    			attr_dev(div2, "class", "result__title svelte-1jb70lg");
+    			add_location(div2, file, 178, 14, 3627);
+    			attr_dev(li, "class", "result svelte-1jb70lg");
+    			add_location(li, file, 172, 12, 3405);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
-    			append_dev(li, t);
+    			append_dev(li, div1);
+    			append_dev(div1, div0);
+    			append_dev(li, t0);
+    			append_dev(li, div2);
+    			append_dev(div2, t1);
+    			append_dev(li, t2);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*searchResults*/ 1 && t_value !== (t_value = /*fields*/ ctx[3]["system.title"] + "")) set_data_dev(t, t_value);
+    			if (dirty & /*searchResults*/ 1) {
+    				set_style(div0, "--backgroundColor", /*colors*/ ctx[3][/*fields*/ ctx[5]["system.workitemtype"]]);
+    			}
+
+    			if (dirty & /*searchResults*/ 1 && t1_value !== (t1_value = /*fields*/ ctx[5]["system.title"] + "")) set_data_dev(t1, t1_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(li);
@@ -446,7 +474,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(100:10) {#each searchResults as { fields }}",
+    		source: "(172:10) {#each searchResults as { fields }}",
     		ctx
     	});
 
@@ -455,70 +483,88 @@ var app = (function () {
 
     function create_fragment(ctx) {
     	let main;
+    	let div4;
+    	let div3;
     	let div2;
-    	let div1;
-    	let div0;
     	let input;
     	let t0;
     	let span;
     	let t2;
+    	let div1;
+    	let div0;
+    	let t3;
     	let dispose;
-    	let if_block = !/*isEmpty*/ ctx[1] && create_if_block(ctx);
+    	let if_block = !/*isEmpty*/ ctx[2] && create_if_block(ctx);
 
     	const block = {
     		c: function create() {
     			main = element("main");
+    			div4 = element("div");
+    			div3 = element("div");
     			div2 = element("div");
-    			div1 = element("div");
-    			div0 = element("div");
     			input = element("input");
     			t0 = space();
     			span = element("span");
     			span.textContent = "Work Item Id";
     			t2 = space();
+    			div1 = element("div");
+    			div0 = element("div");
+    			t3 = space();
     			if (if_block) if_block.c();
-    			attr_dev(input, "class", "input svelte-1rrf3ba");
+    			attr_dev(input, "placeholder", "\n          ");
+    			attr_dev(input, "class", "input svelte-1jb70lg");
     			attr_dev(input, "type", "text");
-    			attr_dev(input, "placeholder", " ");
-    			toggle_class(input, "dirty", !/*isEmpty*/ ctx[1]);
-    			add_location(input, file, 88, 8, 1655);
-    			attr_dev(span, "class", "input__label svelte-1rrf3ba");
-    			add_location(span, file, 94, 8, 1807);
-    			attr_dev(div0, "class", "search-box svelte-1rrf3ba");
-    			add_location(div0, file, 87, 6, 1622);
-    			attr_dev(div1, "class", "container svelte-1rrf3ba");
-    			add_location(div1, file, 86, 4, 1592);
-    			attr_dev(div2, "class", "center svelte-1rrf3ba");
-    			add_location(div2, file, 85, 2, 1567);
-    			add_location(main, file, 84, 0, 1558);
+    			toggle_class(input, "dirty", !/*isEmpty*/ ctx[2]);
+    			add_location(input, file, 156, 8, 2950);
+    			attr_dev(span, "class", "input__label svelte-1jb70lg");
+    			add_location(span, file, 163, 8, 3117);
+    			attr_dev(div0, "class", "loader--inner svelte-1jb70lg");
+    			add_location(div0, file, 165, 10, 3217);
+    			attr_dev(div1, "class", "loader svelte-1jb70lg");
+    			toggle_class(div1, "loading", /*loading*/ ctx[1]);
+    			add_location(div1, file, 164, 8, 3172);
+    			attr_dev(div2, "class", "search-box svelte-1jb70lg");
+    			add_location(div2, file, 155, 6, 2917);
+    			attr_dev(div3, "class", "container svelte-1jb70lg");
+    			add_location(div3, file, 154, 4, 2887);
+    			attr_dev(div4, "class", "center svelte-1jb70lg");
+    			add_location(div4, file, 153, 2, 2862);
+    			add_location(main, file, 152, 0, 2853);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, main, anchor);
-    			append_dev(main, div2);
+    			append_dev(main, div4);
+    			append_dev(div4, div3);
+    			append_dev(div3, div2);
+    			append_dev(div2, input);
+    			append_dev(div2, t0);
+    			append_dev(div2, span);
+    			append_dev(div2, t2);
     			append_dev(div2, div1);
     			append_dev(div1, div0);
-    			append_dev(div0, input);
-    			append_dev(div0, t0);
-    			append_dev(div0, span);
-    			append_dev(div1, t2);
-    			if (if_block) if_block.m(div1, null);
-    			dispose = listen_dev(input, "input", /*handleChange*/ ctx[2], false, false, false);
+    			append_dev(div3, t3);
+    			if (if_block) if_block.m(div3, null);
+    			dispose = listen_dev(input, "input", /*handleChange*/ ctx[4], false, false, false);
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*isEmpty*/ 2) {
-    				toggle_class(input, "dirty", !/*isEmpty*/ ctx[1]);
+    			if (dirty & /*isEmpty*/ 4) {
+    				toggle_class(input, "dirty", !/*isEmpty*/ ctx[2]);
     			}
 
-    			if (!/*isEmpty*/ ctx[1]) {
+    			if (dirty & /*loading*/ 2) {
+    				toggle_class(div1, "loading", /*loading*/ ctx[1]);
+    			}
+
+    			if (!/*isEmpty*/ ctx[2]) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
     					if_block = create_if_block(ctx);
     					if_block.c();
-    					if_block.m(div1, null);
+    					if_block.m(div3, null);
     				}
     			} else if (if_block) {
     				if_block.d(1);
@@ -546,15 +592,33 @@ var app = (function () {
     }
 
     function instance($$self, $$props, $$invalidate) {
+    	const colors = {
+    		Bug: "rgb(204, 41, 61)",
+    		Enabler: "rgb(96, 175, 73)",
+    		Epic: "rgb(255, 123, 0)",
+    		Feature: "rgb(119, 59, 147)",
+    		Issue: "rgb(96, 175, 73)",
+    		Kaizen: "rgb(96, 175, 73)",
+    		Pentesting: "pentesting",
+    		Support: "rgb(96, 175, 73)",
+    		Task: "rgb(242, 203, 29)",
+    		"Tech Debt": "rgb(96, 175, 73)",
+    		"User Story": "rgb(0, 156, 204)"
+    	};
+
     	let searchResults = [];
+    	let loading;
 
     	async function handleChange({ target: { value } }) {
     		if (!value) {
     			$$invalidate(0, searchResults = []);
+    			$$invalidate(1, loading = false);
     			return;
     		}
 
+    		$$invalidate(1, loading = true);
     		const { results } = await searchAzure(value);
+    		$$invalidate(1, loading = false);
     		$$invalidate(0, searchResults = results);
     	}
 
@@ -564,18 +628,19 @@ var app = (function () {
 
     	$$self.$inject_state = $$props => {
     		if ("searchResults" in $$props) $$invalidate(0, searchResults = $$props.searchResults);
-    		if ("isEmpty" in $$props) $$invalidate(1, isEmpty = $$props.isEmpty);
+    		if ("loading" in $$props) $$invalidate(1, loading = $$props.loading);
+    		if ("isEmpty" in $$props) $$invalidate(2, isEmpty = $$props.isEmpty);
     	};
 
     	let isEmpty;
 
     	$$self.$$.update = () => {
     		if ($$self.$$.dirty & /*searchResults*/ 1) {
-    			 $$invalidate(1, isEmpty = searchResults.length === 0);
+    			 $$invalidate(2, isEmpty = searchResults.length === 0);
     		}
     	};
 
-    	return [searchResults, isEmpty, handleChange];
+    	return [searchResults, loading, isEmpty, colors, handleChange];
     }
 
     class App extends SvelteComponentDev {

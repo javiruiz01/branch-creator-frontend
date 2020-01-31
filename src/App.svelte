@@ -1,15 +1,33 @@
 <script>
   import { searchAzure } from "./azure.service";
 
+  const colors = {
+    Bug: "rgb(204, 41, 61)",
+    Enabler: "rgb(96, 175, 73)",
+    Epic: "rgb(255, 123, 0)",
+    Feature: "rgb(119, 59, 147)",
+    Issue: "rgb(96, 175, 73)",
+    Kaizen: "rgb(96, 175, 73)",
+    Pentesting: "pentesting",
+    Support: "rgb(96, 175, 73)",
+    Task: "rgb(242, 203, 29)",
+    "Tech Debt": "rgb(96, 175, 73)",
+    "User Story": "rgb(0, 156, 204)"
+  };
+
   let searchResults = [];
+  let loading;
   $: isEmpty = searchResults.length === 0;
   async function handleChange({ target: { value } }) {
     if (!value) {
       searchResults = [];
+      loading = false;
       return;
     }
 
+    loading = true;
     const { results } = await searchAzure(value);
+    loading = false;
     searchResults = results;
   }
 </script>
@@ -42,13 +60,12 @@
     -webkit-appearance: none;
     outline: 0;
     height: 3.438rem;
-    padding: 22px 15px 0;
+    padding: 1.375rem 0.9375rem 0;
     border: none;
     background-color: #d8d8d840;
     font-size: 1.063rem;
     border-radius: 4px;
   }
-
 
   .input:focus + .input__label,
   .input:not(:placeholder-shown) + .input__label {
@@ -67,18 +84,69 @@
     pointer-events: none;
   }
 
-  .dirty {
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
+  .loading {
+    display: block;
   }
 
+  .loader {
+    display: none;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid #d8d8d840;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  }
+
+  .loader--inner {
+    height: 23px;
+    width: 23px;
+    border: 1px solid white;
+    border-top: 1px solid #004dff;
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+  }
   .results {
     position: absolute;
-    top: 3.4375rem;
-    padding: 0.625rem;
+    top: 4.0625rem;
     background-color: #d8d8d840;
+    border-radius: 4px;
+    max-height: 23.4375rem;
+    overflow-y: scroll;
+  }
+
+  .result {
+    padding: 0.625rem 0.9375rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .result:hover {
+    background-color: #dcdce0;
+  }
+
+  .result__icon {
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+    background-color: var(--backgroundColor);
+  }
+
+  .result__title {
+    margin-left: 12px;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 </style>
 
@@ -87,18 +155,29 @@
     <div class="container">
       <div class="search-box">
         <input
-          class="input"
+          placeholder="
+          "
           class:dirty={!isEmpty}
+          class="input"
           on:input={handleChange}
-          type="text"
-					placeholder=" " />
+          type="text" />
         <span class="input__label">Work Item Id</span>
+        <div class="loader" class:loading>
+          <div class="loader--inner" />
+        </div>
       </div>
 
       {#if !isEmpty}
-        <ul class="results">
+        <ul class="results scrollable-container">
           {#each searchResults as { fields }}
-            <li class="result">{fields['system.title']}</li>
+            <li class="result">
+              <div>
+                <div
+                  class="result__icon"
+                  style="--backgroundColor:{colors[fields['system.workitemtype']]}" />
+              </div>
+              <div class="result__title">{fields['system.title']}</div>
+            </li>
           {/each}
         </ul>
       {/if}

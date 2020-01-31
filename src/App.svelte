@@ -1,41 +1,13 @@
 <script>
-  import { onMount } from "svelte";
-  const apiUrl = `https://almsearch.dev.azure.com/payvision/Warriors/_apis/search/workitemsearchresults?api-version=5.1-preview.1`;
+  import { searchAzure } from "./azure.service";
+  import { throttle } from "./throttle";
 
-  let results = [];
-  var myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
-  myHeaders.append(
-    "Authorization",
-    "Basic OnBid3BzaGxhdW54aXJlejZsNm5kM2pub2kyb2JjeGd2anpkaHZlN2M0YnhpeXNycnNrcmE="
-  );
-
-  const requestOptions = {
-    method: "POST",
-    headers: myHeaders,
-    body: JSON.stringify({
-      searchText: "130988",
-      $skip: 0,
-      $top: 1,
-      filters: null,
-      $orderBy: [
-        {
-          field: "system.id",
-          sortOrder: "ASC"
-        }
-      ]
-    }),
-    redirect: "follow"
-  };
-
-  onMount(async () => {
-    const res = await fetch(apiUrl, requestOptions);
-    results = await res.json();
-    console.log(results);
-  });
-
-  function handleChange({ target: { value } }) {
-    console.log(value);
+  async function handleChange({ target: { value } }) {
+    if (!value) {
+      return;
+    }
+    const searchResult = await searchAzure(value);
+    console.log(searchResult);
   }
 </script>
 

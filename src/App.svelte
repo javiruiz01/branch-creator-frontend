@@ -1,24 +1,5 @@
 <script>
-  import { searchAzure } from "./azure.service";
-  import Input from "./Input.svelte";
-  import Loader from "./Loader.svelte";
-  import List from "./List.svelte";
-
-  let loading;
-  let searchResults = [];
-
-  async function handleChange({ target: { value } }) {
-    if (!value) {
-      searchResults = [];
-      loading = false;
-      return;
-    }
-
-    loading = true;
-    const { results } = await searchAzure(value);
-    loading = false;
-    searchResults = results;
-  }
+  import SearchBoxContainer from "./SearchBoxContainer.svelte";
 </script>
 
 <style>
@@ -48,11 +29,6 @@
     font-size: 1.5rem;
     font-family: "Fira Code", sans-serif;
   }
-
-  .search-box {
-    width: 100%;
-    position: relative;
-  }
 </style>
 
 <main class="center">
@@ -60,10 +36,6 @@
     <div class="title">
       <h1>Branch creator</h1>
     </div>
-    <div class="search-box">
-      <Input {handleChange} placeholder="Work item Id" />
-      <Loader {loading} />
-      <List list={searchResults} />
-    </div>
+    <SearchBoxContainer />
   </div>
 </main>

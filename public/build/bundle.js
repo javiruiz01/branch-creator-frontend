@@ -983,6 +983,12 @@ var app = (function () {
     	let div0;
     	let h1;
     	let t1;
+    	let t2;
+    	let footer;
+    	let t3;
+    	let span;
+    	let t5;
+    	let a;
     	let current;
     	const searchboxcontainer = new SearchBoxContainer({ $$inline: true });
 
@@ -995,13 +1001,29 @@ var app = (function () {
     			h1.textContent = "Branch creator";
     			t1 = space();
     			create_component(searchboxcontainer.$$.fragment);
-    			add_location(h1, file$4, 36, 6, 676);
-    			attr_dev(div0, "class", "title svelte-2r6h8n");
-    			add_location(div0, file$4, 35, 4, 650);
-    			attr_dev(div1, "class", "container svelte-2r6h8n");
-    			add_location(div1, file$4, 34, 2, 622);
-    			attr_dev(main, "class", "center svelte-2r6h8n");
-    			add_location(main, file$4, 33, 0, 598);
+    			t2 = space();
+    			footer = element("footer");
+    			t3 = text("Crafted with\n  ");
+    			span = element("span");
+    			span.textContent = "♥";
+    			t5 = text("\n  by\n  ");
+    			a = element("a");
+    			a.textContent = "@javiruiz06";
+    			add_location(h1, file$4, 51, 6, 939);
+    			attr_dev(div0, "class", "title svelte-qmqb00");
+    			add_location(div0, file$4, 50, 4, 913);
+    			attr_dev(div1, "class", "container svelte-qmqb00");
+    			add_location(div1, file$4, 49, 2, 885);
+    			attr_dev(main, "class", "center svelte-qmqb00");
+    			add_location(main, file$4, 48, 0, 861);
+    			set_style(span, "color", "red");
+    			add_location(span, file$4, 58, 2, 1044);
+    			attr_dev(a, "target", "_blank");
+    			attr_dev(a, "href", "https://twitter.com/javiruiz06");
+    			attr_dev(a, "class", "svelte-qmqb00");
+    			add_location(a, file$4, 60, 2, 1086);
+    			attr_dev(footer, "class", "svelte-qmqb00");
+    			add_location(footer, file$4, 56, 0, 1018);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1013,6 +1035,12 @@ var app = (function () {
     			append_dev(div0, h1);
     			append_dev(div1, t1);
     			mount_component(searchboxcontainer, div1, null);
+    			insert_dev(target, t2, anchor);
+    			insert_dev(target, footer, anchor);
+    			append_dev(footer, t3);
+    			append_dev(footer, span);
+    			append_dev(footer, t5);
+    			append_dev(footer, a);
     			current = true;
     		},
     		p: noop,
@@ -1028,6 +1056,8 @@ var app = (function () {
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(main);
     			destroy_component(searchboxcontainer);
+    			if (detaching) detach_dev(t2);
+    			if (detaching) detach_dev(footer);
     		}
     	};
 

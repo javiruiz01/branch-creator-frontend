@@ -6,6 +6,7 @@
 <style>
   .input-container {
     position: relative;
+    width: 100%;
   }
 
   .input {

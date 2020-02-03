@@ -1,0 +1,31 @@
+<style>
+  :global(:root) {
+    --color-hip-purple: "#af9bff";
+    --color-baby-blue: "#b9dcff";
+
+    --color-yv-green: "#007364";
+    --color-green-grass: "#00cd78";
+    --color-pastel-green: "#c8ffe1";
+
+    --color-yv-red: "#be3c50";
+    --color-brick-red: "#ff7d6e";
+    --color-mustard-yellow: "#ffc882";
+
+    --color-black: "#000000";
+    --color-white: "#ffffff";
+
+    --color-dark-grey: "#465a64";
+    --color-dark-grey-80: "#67747c";
+    --color-dark-grey-60: "#909ca2";
+    --color-dark-grey-40: "#b5bdc1";
+    --color-dark-grey-20: "#dadee0";
+
+    --color-light-grey: "#dcdce0";
+    --color-light-grey-60: "#eaeaec";
+
+    --color-light-cream: "#f2f2e9";
+    --color-light-cream-60: "#f7f7f2";
+
+    --color-error: "#e6493a";
+  }
+</style>

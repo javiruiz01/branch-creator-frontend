@@ -11,13 +11,10 @@ const basicFields = {
   ]
 };
 
-export async function searchAzure(searchText) {
+export async function searchAzure(token, searchText) {
   const myHeaders = new Headers();
   myHeaders.append('Content-Type', 'application/json');
-  myHeaders.append(
-    'Authorization',
-    'Basic OnBid3BzaGxhdW54aXJlejZsNm5kM2pub2kyb2JjeGd2anpkaHZlN2M0YnhpeXNycnNrcmE='
-  );
+  myHeaders.append('Authorization', `Basic ${token}`);
 
   const requestOptions = {
     method: 'POST',

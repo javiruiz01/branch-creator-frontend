@@ -1,6 +1,9 @@
 <script>
+  import { token } from "./Store.js";
+  import Colors from "./Colors.svelte";
   import SearchBoxContainer from "./SearchBoxContainer.svelte";
   import Footer from "./Footer.svelte";
+  import Token from "./Token.svelte";
 </script>
 
 <style>
@@ -27,17 +30,27 @@
     justify-self: center;
     align-self: center;
     margin-bottom: 1.25rem;
+  }
+
+  .title > h1 {
     font-size: 1.5rem;
     font-family: "Fira Code", sans-serif;
   }
 </style>
 
+<svelte:head>
+  <Colors />
+</svelte:head>
 <main class="center">
   <div class="container">
     <div class="title">
       <h1>Branch creator</h1>
     </div>
-    <SearchBoxContainer />
+    {#if $token}
+      <SearchBoxContainer />
+    {:else}
+      <Token />
+    {/if}
   </div>
 </main>
 <Footer />

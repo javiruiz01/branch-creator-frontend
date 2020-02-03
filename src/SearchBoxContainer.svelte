@@ -1,5 +1,6 @@
 <script>
   import { searchAzure } from "./azure.service";
+  import { token } from "./Store.js";
 
   import Input from "./Input.svelte";
   import Loader from "./Loader.svelte";
@@ -16,9 +17,9 @@
     }
 
     loading = true;
-    const { results } = await searchAzure(value);
-    loading = false;
+    const { results } = await searchAzure($token, value);
     searchResults = results;
+    loading = false;
   }
 </script>
 

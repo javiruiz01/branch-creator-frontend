@@ -12,12 +12,13 @@
 
   footer > a {
     color: rgba(74, 74, 74, 0.5);
+    text-decoration: none;
   }
 </style>
 
 <footer>
   Crafted with
-  <span style="color: red;">♥</span>
+  <span style="color: #be3c50;">♥</span>
   by
   <a target="_blank" href="https://twitter.com/javiruiz06">@javiruiz06</a>
 </footer>

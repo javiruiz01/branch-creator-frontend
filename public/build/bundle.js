@@ -1075,7 +1075,7 @@ var app = (function () {
     			t1 = space();
     			create_component(list.$$.fragment);
     			attr_dev(div, "class", "search-box svelte-y405c7");
-    			add_location(div, file$3, 42, 0, 912);
+    			add_location(div, file$3, 48, 0, 1176);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1131,7 +1131,15 @@ var app = (function () {
 
     function handleSelection({ "system.workitemtype": type, "system.id": id, "system.title": title }) {
     	const branchName = getBranchName(type, id, title);
-    	console.log(branchName);
+
+    	const listener = e => {
+    		e.clipboardData.setData("text/plain", branchName);
+    		e.preventDefault();
+    	};
+
+    	document.addEventListener("copy", listener, false);
+    	document.execCommand("copy");
+    	document.removeEventListener("copy", listener, false);
     }
 
     function instance$3($$self, $$props, $$invalidate) {
@@ -1149,9 +1157,7 @@ var app = (function () {
     		}
 
     		$$invalidate(0, loading = true);
-    		const { results } = await searchAzure($token, value);
-    		$$invalidate(1, searchResults = results);
-    		$$invalidate(0, loading = false);
+    		searchAzure($token, value).then(({ results }) => $$invalidate(1, searchResults = results)).finally(() => $$invalidate(0, loading = false));
     	}
 
     	$$self.$capture_state = () => {

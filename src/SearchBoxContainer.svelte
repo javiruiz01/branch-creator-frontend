@@ -18,9 +18,9 @@
     }
 
     loading = true;
-    const { results } = await searchAzure($token, value);
-    searchResults = results;
-    loading = false;
+    searchAzure($token, value)
+      .then(({ results }) => (searchResults = results))
+      .finally(() => (loading = false));
   }
 
   function handleSelection({
@@ -29,7 +29,13 @@
     "system.title": title
   }) {
     const branchName = getBranchName(type, id, title);
-    console.log(branchName);
+    const listener = e => {
+      e.clipboardData.setData("text/plain", branchName);
+      e.preventDefault();
+    };
+    document.addEventListener("copy", listener, false);
+    document.execCommand("copy");
+    document.removeEventListener("copy", listener, false);
   }
 </script>
 

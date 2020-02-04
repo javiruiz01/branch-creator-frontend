@@ -478,13 +478,14 @@ var app = (function () {
     };
 
     async function searchAzure(token, searchText) {
-      const myHeaders = new Headers();
-      myHeaders.append('Content-Type', 'application/json');
-      myHeaders.append('Authorization', `Basic ${token}`);
+      const headers = new Headers({
+        'Content-Type': 'application/json',
+        Authorization: `Basic ${btoa(`:${token}`)}`
+      });
 
       const requestOptions = {
         method: 'POST',
-        headers: myHeaders,
+        headers,
         body: JSON.stringify(Object.assign({}, basicFields, { searchText })),
         redirect: 'follow'
       };

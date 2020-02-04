@@ -23,7 +23,7 @@
     max-width: 43.75rem;
     min-width: 18.75rem;
     position: relative;
-    padding-bottom: 18.75rem;
+    padding-bottom: 40vh;
   }
 
   .title {

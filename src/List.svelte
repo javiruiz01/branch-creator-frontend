@@ -1,24 +1,12 @@
 <script>
   import { beforeUpdate, afterUpdate } from "svelte";
+  import { workItemTypes } from "./Types";
+  import { getBranchName } from "./WorkItem";
 
   export let list;
+  export let handleSelection;
   let autoscroll;
   let div;
-
-  const colors = {
-    Bug: "rgb(204, 41, 61)",
-    Enabler: "rgb(96, 175, 73)",
-    Epic: "rgb(255, 123, 0)",
-    Feature: "rgb(119, 59, 147)",
-    Issue: "rgb(96, 175, 73)",
-    Kaizen: "rgb(96, 175, 73)",
-    Pentesting: "pentesting",
-    Support: "rgb(96, 175, 73)",
-    Task: "rgb(242, 203, 29)",
-    "Tech Debt": "rgb(96, 175, 73)",
-    "Test Case": "rgb(96, 175, 73)",
-    "User Story": "rgb(0, 156, 204)"
-  };
 
   beforeUpdate(() => {
     autoscroll = div && div.offsetHeight + div.scrollTop > div.scrollHeight;
@@ -29,6 +17,14 @@
       div.scrollTo(0, div.scrollHeight);
     }
   });
+
+  function getBackgroundColor({ "system.workitemtype": type }) {
+    return workItemTypes[type].color;
+  }
+
+  function getTitle({ "system.title": title }) {
+    return title;
+  }
 </script>
 
 <style>
@@ -68,13 +64,13 @@
 
 <ul class="results scrollable-container" bind:this={div}>
   {#each list as { fields }}
-    <li class="result">
+    <li class="result" on:click={() => handleSelection(fields)}>
       <div>
         <div
           class="result__icon"
-          style="--backgroundColor:{colors[fields['system.workitemtype']]}" />
+          style="--backgroundColor:{getBackgroundColor(fields)}" />
       </div>
-      <div class="result__title">{fields['system.title']}</div>
+      <div class="result__title">{getTitle(fields)}</div>
     </li>
   {/each}
 </ul>

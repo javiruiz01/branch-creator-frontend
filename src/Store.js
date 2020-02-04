@@ -1,3 +1,6 @@
 import { writable } from 'svelte/store';
 
-export const token = writable('');
+const existingToken = localStorage.getItem('AZURE_PAT');
+
+export const token = writable(existingToken ? existingToken : '');
+token.subscribe(value => localStorage.setItem('AZURE_PAT', value));

@@ -1214,13 +1214,13 @@ var app = (function () {
     			a = element("a");
     			a.textContent = "@javiruiz06";
     			set_style(span, "color", "#be3c50");
-    			add_location(span, file$4, 20, 2, 353);
+    			add_location(span, file$4, 26, 2, 451);
     			attr_dev(a, "target", "_blank");
     			attr_dev(a, "href", "https://twitter.com/javiruiz06");
-    			attr_dev(a, "class", "svelte-1jhi1dd");
-    			add_location(a, file$4, 22, 2, 401);
-    			attr_dev(footer, "class", "svelte-1jhi1dd");
-    			add_location(footer, file$4, 18, 0, 325);
+    			attr_dev(a, "class", "svelte-agz5my");
+    			add_location(a, file$4, 28, 2, 499);
+    			attr_dev(footer, "class", "svelte-agz5my");
+    			add_location(footer, file$4, 24, 0, 423);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");

@@ -14,6 +14,12 @@
     color: rgba(74, 74, 74, 0.5);
     text-decoration: none;
   }
+
+  @media screen and (max-height: 610px) {
+    footer {
+      visibility: hidden;
+    }
+  }
 </style>
 
 <footer>

@@ -4,6 +4,7 @@
   import SearchBoxContainer from "./SearchBoxContainer.svelte";
   import Footer from "./Footer.svelte";
   import Token from "./Token.svelte";
+  import Toaster from "./Toaster.svelte";
 </script>
 
 <style>
@@ -41,6 +42,7 @@
 <svelte:head>
   <Colors />
 </svelte:head>
+<Toaster />
 <main class="center">
   <div class="container">
     <div class="title">

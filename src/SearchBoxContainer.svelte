@@ -1,6 +1,6 @@
 <script>
   import { searchAzure } from "./azure.service";
-  import { token } from "./Store.js";
+  import { token, newBranchName } from "./Store.js";
   import { getBranchName } from "./WorkItem";
 
   import Input from "./Input.svelte";
@@ -29,6 +29,7 @@
     "system.title": title
   }) {
     const branchName = getBranchName(type, id, title);
+    newBranchName.update(newBranchName => (newBranchName = branchName));
     const listener = e => {
       e.clipboardData.setData("text/plain", branchName);
       e.preventDefault();

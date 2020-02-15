@@ -1,7 +1,6 @@
 <script>
   import { beforeUpdate, afterUpdate } from "svelte";
-  import { workItemTypes } from "./Types";
-  import { getBranchName } from "./WorkItem";
+  import { getBranchName, workItemTypes } from "../WorkItem";
 
   export let list;
   export let handleSelection;

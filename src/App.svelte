@@ -1,10 +1,9 @@
 <script>
   import { token } from "./Store.js";
-  import Colors from "./Colors.svelte";
-  import SearchBoxContainer from "./SearchBoxContainer.svelte";
-  import Footer from "./Footer.svelte";
-  import Token from "./Token.svelte";
-  import Toaster from "./Toaster.svelte";
+  import Footer from "./Components/Footer.svelte";
+  import SearchBoxContainer from "./Pages/SearchBoxContainer.svelte";
+  import Toaster from "./Components/Toaster.svelte";
+  import Token from "./Pages/Token.svelte";
 </script>
 
 <style>
@@ -39,9 +38,6 @@
   }
 </style>
 
-<svelte:head>
-  <Colors />
-</svelte:head>
 <Toaster />
 <main class="center">
   <div class="container">

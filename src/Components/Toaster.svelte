@@ -1,5 +1,5 @@
 <script>
-  import { newBranchName } from "./Store";
+  import { newBranchName } from "../Store";
 
   let show = false;
 

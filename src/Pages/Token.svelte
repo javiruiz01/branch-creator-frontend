@@ -1,6 +1,6 @@
 <script>
-  import { token } from "./Store.js";
-  import Input from "./Input.svelte";
+  import { token } from "../Store.js";
+  import Input from "../Components/Input.svelte";
 
   let userToken;
 

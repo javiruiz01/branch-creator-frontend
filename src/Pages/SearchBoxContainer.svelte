@@ -1,11 +1,10 @@
 <script>
-  import { searchAzure } from "./azure.service";
-  import { token, newBranchName } from "./Store.js";
-  import { getBranchName } from "./WorkItem";
-
-  import Input from "./Input.svelte";
-  import Loader from "./Loader.svelte";
-  import List from "./List.svelte";
+  import { getBranchName } from "../WorkItem";
+  import { searchAzure } from "../azure.service";
+  import { token, newBranchName } from "../Store.js";
+  import Input from "../Components/Input.svelte";
+  import List from "../Components/List.svelte";
+  import Loader from "../Components/Loader.svelte";
 
   let loading;
   let searchResults = [];

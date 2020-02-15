@@ -16,7 +16,7 @@
     height: 3.438rem;
     padding: 1.375rem 0.9375rem 0;
     border: none;
-    background-color: var(--background-grey);
+    background-color: var(--theme-background);
     font-size: 1.063rem;
     border-radius: 4px;
   }

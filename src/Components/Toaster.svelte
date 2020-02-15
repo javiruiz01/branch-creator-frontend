@@ -33,7 +33,7 @@
 
   .card {
     padding: 1rem;
-    background-color: var(--background-black);
+    background-color: var(--toaster-background);
     border-radius: 4px;
     cursor: pointer;
   }

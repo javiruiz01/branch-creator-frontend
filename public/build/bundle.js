@@ -603,13 +603,13 @@ var app = (function () {
     			span = element("span");
     			t1 = text(/*placeholder*/ ctx[1]);
     			attr_dev(input, "placeholder", " ");
-    			attr_dev(input, "class", "input svelte-jyrrlh");
+    			attr_dev(input, "class", "input svelte-wlzu37");
     			attr_dev(input, "type", "text");
-    			add_location(input, file$1, 42, 2, 847);
-    			attr_dev(span, "class", "input__label svelte-jyrrlh");
-    			add_location(span, file$1, 43, 2, 926);
-    			attr_dev(div, "class", "input-container svelte-jyrrlh");
-    			add_location(div, file$1, 41, 0, 814);
+    			add_location(input, file$1, 42, 2, 848);
+    			attr_dev(span, "class", "input__label svelte-wlzu37");
+    			add_location(span, file$1, 43, 2, 927);
+    			attr_dev(div, "class", "input-container svelte-wlzu37");
+    			add_location(div, file$1, 41, 0, 815);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -745,14 +745,14 @@ var app = (function () {
     			div2 = element("div");
     			t1 = text(t1_value);
     			t2 = space();
-    			attr_dev(div0, "class", "result__icon svelte-1mqsh5l");
+    			attr_dev(div0, "class", "result__icon svelte-18pozo3");
     			set_style(div0, "--backgroundColor", getBackgroundColor(/*fields*/ ctx[6]));
-    			add_location(div0, file$2, 67, 8, 1446);
-    			add_location(div1, file$2, 66, 6, 1431);
-    			attr_dev(div2, "class", "result__title svelte-1mqsh5l");
-    			add_location(div2, file$2, 71, 6, 1573);
-    			attr_dev(li, "class", "result svelte-1mqsh5l");
-    			add_location(li, file$2, 65, 4, 1363);
+    			add_location(div0, file$2, 67, 8, 1449);
+    			add_location(div1, file$2, 66, 6, 1434);
+    			attr_dev(div2, "class", "result__title svelte-18pozo3");
+    			add_location(div2, file$2, 71, 6, 1576);
+    			attr_dev(li, "class", "result svelte-18pozo3");
+    			add_location(li, file$2, 65, 4, 1366);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -807,8 +807,8 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(ul, "class", "results scrollable-container svelte-1mqsh5l");
-    			add_location(ul, file$2, 63, 0, 1270);
+    			attr_dev(ul, "class", "results scrollable-container svelte-18pozo3");
+    			add_location(ul, file$2, 63, 0, 1273);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -976,11 +976,11 @@ var app = (function () {
     		c: function create() {
     			div1 = element("div");
     			div0 = element("div");
-    			attr_dev(div0, "class", "loader--inner svelte-1of7phc");
-    			add_location(div0, file$3, 39, 2, 789);
-    			attr_dev(div1, "class", "loader svelte-1of7phc");
+    			attr_dev(div0, "class", "loader--inner svelte-ev1688");
+    			add_location(div0, file$3, 39, 2, 790);
+    			attr_dev(div1, "class", "loader svelte-ev1688");
     			set_style(div1, "--shouldShow", /*shouldShow*/ ctx[0]);
-    			add_location(div1, file$3, 38, 0, 731);
+    			add_location(div1, file$3, 38, 0, 732);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1242,13 +1242,13 @@ var app = (function () {
     			div0 = element("div");
     			span = element("span");
     			span.textContent = "Copied to clipboard!";
-    			attr_dev(span, "class", "message svelte-1r2hjq");
-    			add_location(span, file$5, 49, 4, 904);
-    			attr_dev(div0, "class", "card svelte-1r2hjq");
-    			add_location(div0, file$5, 48, 2, 880);
-    			attr_dev(div1, "class", "container svelte-1r2hjq");
+    			attr_dev(span, "class", "message svelte-1yvznyb");
+    			add_location(span, file$5, 49, 4, 906);
+    			attr_dev(div0, "class", "card svelte-1yvznyb");
+    			add_location(div0, file$5, 48, 2, 882);
+    			attr_dev(div1, "class", "container svelte-1yvznyb");
     			toggle_class(div1, "show", /*show*/ ctx[0]);
-    			add_location(div1, file$5, 47, 0, 842);
+    			add_location(div1, file$5, 47, 0, 844);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");

@@ -10,7 +10,7 @@
     width: 1.5625rem;
     border-radius: 50%;
     background-color: white;
-    border: 1px solid var(--background-grey);
+    border: 1px solid var(--theme-background);
     position: absolute;
     top: 0.9375rem;
     right: 0.9375rem;

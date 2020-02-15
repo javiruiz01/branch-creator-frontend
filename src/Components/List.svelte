@@ -30,7 +30,7 @@
   .results {
     position: absolute;
     top: 4.0625rem;
-    background-color: var(--background-grey);
+    background-color: var(--theme-background);
     border-radius: 4px;
     max-height: 18.75rem;
     overflow-y: auto;
@@ -46,7 +46,7 @@
   }
 
   .result:hover {
-    background-color: var(--background-grey-dark);
+    background-color: var(--theme-background-hover);
   }
 
   .result__icon {

@@ -29,6 +29,10 @@
   }) {
     const branchName = getBranchName(type, id, title);
     newBranchName.update(newBranchName => (newBranchName = branchName));
+    copyToClipboard(branchName);
+  }
+
+  function copyToClipboard(branchName) {
     const listener = e => {
       e.clipboardData.setData("text/plain", branchName);
       e.preventDefault();

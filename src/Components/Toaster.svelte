@@ -33,7 +33,7 @@
 
   .card {
     padding: 1rem;
-    background-color: #465a64;
+    background-color: var(--background-black);
     border-radius: 4px;
     cursor: pointer;
   }

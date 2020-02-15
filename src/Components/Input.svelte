@@ -16,7 +16,7 @@
     height: 3.438rem;
     padding: 1.375rem 0.9375rem 0;
     border: none;
-    background-color: #d8d8d840;
+    background-color: var(--background-grey);
     font-size: 1.063rem;
     border-radius: 4px;
   }
@@ -34,7 +34,7 @@
     transition-timing-function: ease-in;
     transition-duration: 125ms;
     font-size: 1.063rem;
-    color: #757575;
+    color: var(--color-grey);
     pointer-events: none;
   }
 </style>

@@ -10,7 +10,7 @@
     width: 1.5625rem;
     border-radius: 50%;
     background-color: white;
-    border: 1px solid #d8d8d840;
+    border: 1px solid var(--background-grey);
     position: absolute;
     top: 0.9375rem;
     right: 0.9375rem;
@@ -21,7 +21,7 @@
     height: 1.4375rem;
     width: 1.4375rem;
     border: 1px solid white;
-    border-top: 1px solid #004dff;
+    border-top: 1px solid var(--color-blue);
     border-radius: 50%;
     animation: spin 2s linear infinite;
   }

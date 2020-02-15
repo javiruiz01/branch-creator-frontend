@@ -24,7 +24,7 @@
 
 <footer>
   Crafted with
-  <span style="color: #be3c50;">♥</span>
+  <span style="color: var(--color-dark-red);">♥</span>
   by
   <a target="_blank" href="https://twitter.com/javiruiz06">@javiruiz06</a>
 </footer>

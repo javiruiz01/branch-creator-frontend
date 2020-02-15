@@ -449,12 +449,12 @@ var app = (function () {
     			t2 = text("\r\n  by\r\n  ");
     			a = element("a");
     			a.textContent = "@javiruiz06";
-    			set_style(span, "color", "#be3c50");
+    			set_style(span, "color", "var(--color-dark-red)");
     			add_location(span, file, 26, 2, 451);
     			attr_dev(a, "target", "_blank");
     			attr_dev(a, "href", "https://twitter.com/javiruiz06");
     			attr_dev(a, "class", "svelte-agz5my");
-    			add_location(a, file, 28, 2, 499);
+    			add_location(a, file, 28, 2, 513);
     			attr_dev(footer, "class", "svelte-agz5my");
     			add_location(footer, file, 24, 0, 423);
     		},
@@ -603,13 +603,13 @@ var app = (function () {
     			span = element("span");
     			t1 = text(/*placeholder*/ ctx[1]);
     			attr_dev(input, "placeholder", " ");
-    			attr_dev(input, "class", "input svelte-1v2u1oi");
+    			attr_dev(input, "class", "input svelte-jyrrlh");
     			attr_dev(input, "type", "text");
-    			add_location(input, file$1, 42, 2, 824);
-    			attr_dev(span, "class", "input__label svelte-1v2u1oi");
-    			add_location(span, file$1, 43, 2, 903);
-    			attr_dev(div, "class", "input-container svelte-1v2u1oi");
-    			add_location(div, file$1, 41, 0, 791);
+    			add_location(input, file$1, 42, 2, 847);
+    			attr_dev(span, "class", "input__label svelte-jyrrlh");
+    			add_location(span, file$1, 43, 2, 926);
+    			attr_dev(div, "class", "input-container svelte-jyrrlh");
+    			add_location(div, file$1, 41, 0, 814);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -745,14 +745,14 @@ var app = (function () {
     			div2 = element("div");
     			t1 = text(t1_value);
     			t2 = space();
-    			attr_dev(div0, "class", "result__icon svelte-5m0rrh");
+    			attr_dev(div0, "class", "result__icon svelte-1mqsh5l");
     			set_style(div0, "--backgroundColor", getBackgroundColor(/*fields*/ ctx[6]));
-    			add_location(div0, file$2, 67, 8, 1413);
-    			add_location(div1, file$2, 66, 6, 1398);
-    			attr_dev(div2, "class", "result__title svelte-5m0rrh");
-    			add_location(div2, file$2, 71, 6, 1540);
-    			attr_dev(li, "class", "result svelte-5m0rrh");
-    			add_location(li, file$2, 65, 4, 1330);
+    			add_location(div0, file$2, 67, 8, 1446);
+    			add_location(div1, file$2, 66, 6, 1431);
+    			attr_dev(div2, "class", "result__title svelte-1mqsh5l");
+    			add_location(div2, file$2, 71, 6, 1573);
+    			attr_dev(li, "class", "result svelte-1mqsh5l");
+    			add_location(li, file$2, 65, 4, 1363);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -807,8 +807,8 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(ul, "class", "results scrollable-container svelte-5m0rrh");
-    			add_location(ul, file$2, 63, 0, 1237);
+    			attr_dev(ul, "class", "results scrollable-container svelte-1mqsh5l");
+    			add_location(ul, file$2, 63, 0, 1270);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -976,11 +976,11 @@ var app = (function () {
     		c: function create() {
     			div1 = element("div");
     			div0 = element("div");
-    			attr_dev(div0, "class", "loader--inner svelte-f28hea");
-    			add_location(div0, file$3, 39, 2, 766);
-    			attr_dev(div1, "class", "loader svelte-f28hea");
+    			attr_dev(div0, "class", "loader--inner svelte-1of7phc");
+    			add_location(div0, file$3, 39, 2, 789);
+    			attr_dev(div1, "class", "loader svelte-1of7phc");
     			set_style(div1, "--shouldShow", /*shouldShow*/ ctx[0]);
-    			add_location(div1, file$3, 38, 0, 708);
+    			add_location(div1, file$3, 38, 0, 731);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1112,7 +1112,7 @@ var app = (function () {
     			t1 = space();
     			create_component(list.$$.fragment);
     			attr_dev(div, "class", "search-box svelte-gp6mnc");
-    			add_location(div, file$4, 48, 0, 1254);
+    			add_location(div, file$4, 52, 0, 1333);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1169,7 +1169,10 @@ var app = (function () {
     function handleSelection({ "system.workitemtype": type, "system.id": id, "system.title": title }) {
     	const branchName = getBranchName(type, id, title);
     	newBranchName.update(newBranchName => newBranchName = branchName);
+    	copyToClipboard(branchName);
+    }
 
+    function copyToClipboard(branchName) {
     	const listener = e => {
     		e.clipboardData.setData("text/plain", branchName);
     		e.preventDefault();
@@ -1239,13 +1242,13 @@ var app = (function () {
     			div0 = element("div");
     			span = element("span");
     			span.textContent = "Copied to clipboard!";
-    			attr_dev(span, "class", "message svelte-qnfhql");
-    			add_location(span, file$5, 49, 4, 888);
-    			attr_dev(div0, "class", "card svelte-qnfhql");
-    			add_location(div0, file$5, 48, 2, 864);
-    			attr_dev(div1, "class", "container svelte-qnfhql");
+    			attr_dev(span, "class", "message svelte-1r2hjq");
+    			add_location(span, file$5, 49, 4, 904);
+    			attr_dev(div0, "class", "card svelte-1r2hjq");
+    			add_location(div0, file$5, 48, 2, 880);
+    			attr_dev(div1, "class", "container svelte-1r2hjq");
     			toggle_class(div1, "show", /*show*/ ctx[0]);
-    			add_location(div1, file$5, 47, 0, 826);
+    			add_location(div1, file$5, 47, 0, 842);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");

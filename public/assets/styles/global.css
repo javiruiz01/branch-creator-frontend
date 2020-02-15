@@ -14,8 +14,15 @@ body {
   text-rendering: optimizeLegibility;
   height: 100%;
   overflow: hidden;
+  background-color: white;
 }
 
 :root {
   font-size: 16px;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--background-black);
+  }
 }

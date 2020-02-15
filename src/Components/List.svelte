@@ -58,6 +58,7 @@
 
   .result__title {
     margin-left: 12px;
+    color: var(--theme-font);
   }
 </style>
 

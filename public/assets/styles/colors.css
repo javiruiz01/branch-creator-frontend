@@ -1,21 +1,22 @@
 :root {
   --color-blue: #004dff;
   --color-dark-red: #be3c50;
-  --color-grey: #757575;
   --theme-background-color: white;
   --theme-background-hover: #dcdce0;
   --theme-background: #d8d8d840;
+  --theme-font: black;
+  --theme-font-light: #757575;
   --toaster-background: #465a64;
 }
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
   :root {
     --color-blue: #004dff;
     --color-dark-red: #be3c50;
-    --color-grey: #757575;
-    --theme-background-color: white;
-    --theme-background-hover: #dcdce0;
-    --theme-background: #d8d8d840;
-    --toaster-background: #465a64;
+    --theme-background-color: #414141;
+    --theme-background-hover: #20292d;
+    --theme-background: #465a64;
+    --theme-font: white;
+    --theme-font-light: #fefefe;
   }
 }

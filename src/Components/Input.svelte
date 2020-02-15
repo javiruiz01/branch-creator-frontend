@@ -19,6 +19,7 @@
     background-color: var(--theme-background);
     font-size: 1.063rem;
     border-radius: 4px;
+    color: var(--theme-font);
   }
 
   .input:focus + .input__label,
@@ -34,7 +35,7 @@
     transition-timing-function: ease-in;
     transition-duration: 125ms;
     font-size: 1.063rem;
-    color: var(--color-grey);
+    color: var(--theme-font-light);
     pointer-events: none;
   }
 </style>

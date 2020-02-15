@@ -6,12 +6,12 @@
     left: 1%;
     right: 1%;
     bottom: 1.875rem;
-    color: rgba(74, 74, 74, 0.5);
+    color: var(--theme-font-light);
     font-size: 1rem;
   }
 
   footer > a {
-    color: rgba(74, 74, 74, 0.5);
+    color: var(--theme-font-light);
     text-decoration: none;
   }
 

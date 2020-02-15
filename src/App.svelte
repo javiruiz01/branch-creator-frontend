@@ -35,6 +35,7 @@
   .title > h1 {
     font-size: 1.5rem;
     font-family: "Fira Code", sans-serif;
+    color: var(--theme-font);
   }
 </style>
 

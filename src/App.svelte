@@ -40,8 +40,8 @@
   }
 </style>
 
-<Toaster />
 <Toggle />
+<Toaster />
 <main class="center">
   <div class="container">
     <div class="title">

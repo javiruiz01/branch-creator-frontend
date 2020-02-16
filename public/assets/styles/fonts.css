@@ -2,6 +2,7 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 300;
+  font-display: swap;
   src: url('../fonts/Roboto-Light.woff2') format('woff2'),
     url('../fonts/Roboto-Light.woff') format('woff'),
     url('../fonts/Roboto-Light.ttf') format('truetype');
@@ -11,6 +12,7 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
   src: url('../fonts/Roboto-Regular.woff2') format('woff2'),
     url('../fonts/Roboto-Regular.woff') format('woff'),
     url('../fonts/Roboto-Regular.ttf') format('truetype');

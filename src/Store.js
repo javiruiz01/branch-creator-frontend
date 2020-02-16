@@ -8,6 +8,4 @@ export const newBranchName = writable('');
 
 const selectedTheme = localStorage.getItem('THEME');
 export const theme = writable(selectedTheme ? selectedTheme : 'light');
-theme.subscribe(value => {
-  localStorage.setItem('THEME', value);
-});
+theme.subscribe(value => localStorage.setItem('THEME', value));

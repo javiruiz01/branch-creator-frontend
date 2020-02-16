@@ -9,7 +9,7 @@
   --toaster-background: #465a64;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
     --color-blue: #004dff;
     --color-dark-red: #be3c50;

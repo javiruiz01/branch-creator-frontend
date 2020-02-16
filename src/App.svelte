@@ -3,6 +3,7 @@
   import Footer from "./Components/Footer.svelte";
   import SearchBoxContainer from "./Pages/SearchBoxContainer.svelte";
   import Toaster from "./Components/Toaster.svelte";
+  import Toggle from "./Components/Toggle.svelte";
   import Token from "./Pages/Token.svelte";
 </script>
 
@@ -40,6 +41,7 @@
 </style>
 
 <Toaster />
+<Toggle />
 <main class="center">
   <div class="container">
     <div class="title">

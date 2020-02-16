@@ -1,5 +1,6 @@
 <script>
   export let handleChange;
+  export let label = "";
   export let placeholder;
 </script>
 
@@ -41,6 +42,6 @@
 </style>
 
 <div class="input-container">
-  <input placeholder=" " class="input" on:input={handleChange} type="text" />
-  <span class="input__label">{placeholder}</span>
+  <input placeholder=" " id={label} class="input" on:input={handleChange} type="text" />
+  <label class="input__label" for={label}>{placeholder}</label>
 </div>

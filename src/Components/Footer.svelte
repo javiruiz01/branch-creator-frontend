@@ -26,5 +26,5 @@
   Crafted with
   <span style="color: var(--color-dark-red);">♥</span>
   by
-  <a target="_blank" href="https://twitter.com/javiruiz06">@javiruiz06</a>
+  <a target="_blank" href="https://twitter.com/javiruiz06" rel="noreferrer">@javiruiz06</a>
 </footer>

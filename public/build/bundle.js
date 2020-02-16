@@ -456,6 +456,7 @@ var app = (function () {
     			add_location(span, file, 26, 2, 455);
     			attr_dev(a, "target", "_blank");
     			attr_dev(a, "href", "https://twitter.com/javiruiz06");
+    			attr_dev(a, "rel", "noreferrer");
     			attr_dev(a, "class", "svelte-86rdu2");
     			add_location(a, file, 28, 2, 517);
     			attr_dev(footer, "class", "svelte-86rdu2");
@@ -594,7 +595,7 @@ var app = (function () {
     	let div;
     	let input;
     	let t0;
-    	let span;
+    	let label_1;
     	let t1;
     	let dispose;
 
@@ -603,16 +604,18 @@ var app = (function () {
     			div = element("div");
     			input = element("input");
     			t0 = space();
-    			span = element("span");
-    			t1 = text(/*placeholder*/ ctx[1]);
+    			label_1 = element("label");
+    			t1 = text(/*placeholder*/ ctx[2]);
     			attr_dev(input, "placeholder", " ");
+    			attr_dev(input, "id", /*label*/ ctx[1]);
     			attr_dev(input, "class", "input svelte-fjr0mm");
     			attr_dev(input, "type", "text");
-    			add_location(input, file$1, 43, 2, 885);
-    			attr_dev(span, "class", "input__label svelte-fjr0mm");
-    			add_location(span, file$1, 44, 2, 964);
+    			add_location(input, file$1, 44, 2, 911);
+    			attr_dev(label_1, "class", "input__label svelte-fjr0mm");
+    			attr_dev(label_1, "for", /*label*/ ctx[1]);
+    			add_location(label_1, file$1, 45, 2, 1001);
     			attr_dev(div, "class", "input-container svelte-fjr0mm");
-    			add_location(div, file$1, 42, 0, 852);
+    			add_location(div, file$1, 43, 0, 878);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -621,12 +624,20 @@ var app = (function () {
     			insert_dev(target, div, anchor);
     			append_dev(div, input);
     			append_dev(div, t0);
-    			append_dev(div, span);
-    			append_dev(span, t1);
+    			append_dev(div, label_1);
+    			append_dev(label_1, t1);
     			dispose = listen_dev(input, "input", /*handleChange*/ ctx[0], false, false, false);
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*placeholder*/ 2) set_data_dev(t1, /*placeholder*/ ctx[1]);
+    			if (dirty & /*label*/ 2) {
+    				attr_dev(input, "id", /*label*/ ctx[1]);
+    			}
+
+    			if (dirty & /*placeholder*/ 4) set_data_dev(t1, /*placeholder*/ ctx[2]);
+
+    			if (dirty & /*label*/ 2) {
+    				attr_dev(label_1, "for", /*label*/ ctx[1]);
+    			}
     		},
     		i: noop,
     		o: noop,
@@ -649,8 +660,9 @@ var app = (function () {
 
     function instance($$self, $$props, $$invalidate) {
     	let { handleChange } = $$props;
+    	let { label = "" } = $$props;
     	let { placeholder } = $$props;
-    	const writable_props = ["handleChange", "placeholder"];
+    	const writable_props = ["handleChange", "label", "placeholder"];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<Input> was created with unknown prop '${key}'`);
@@ -658,25 +670,32 @@ var app = (function () {
 
     	$$self.$set = $$props => {
     		if ("handleChange" in $$props) $$invalidate(0, handleChange = $$props.handleChange);
-    		if ("placeholder" in $$props) $$invalidate(1, placeholder = $$props.placeholder);
+    		if ("label" in $$props) $$invalidate(1, label = $$props.label);
+    		if ("placeholder" in $$props) $$invalidate(2, placeholder = $$props.placeholder);
     	};
 
     	$$self.$capture_state = () => {
-    		return { handleChange, placeholder };
+    		return { handleChange, label, placeholder };
     	};
 
     	$$self.$inject_state = $$props => {
     		if ("handleChange" in $$props) $$invalidate(0, handleChange = $$props.handleChange);
-    		if ("placeholder" in $$props) $$invalidate(1, placeholder = $$props.placeholder);
+    		if ("label" in $$props) $$invalidate(1, label = $$props.label);
+    		if ("placeholder" in $$props) $$invalidate(2, placeholder = $$props.placeholder);
     	};
 
-    	return [handleChange, placeholder];
+    	return [handleChange, label, placeholder];
     }
 
     class Input extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance, create_fragment$1, safe_not_equal, { handleChange: 0, placeholder: 1 });
+
+    		init(this, options, instance, create_fragment$1, safe_not_equal, {
+    			handleChange: 0,
+    			label: 1,
+    			placeholder: 2
+    		});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -692,7 +711,7 @@ var app = (function () {
     			console.warn("<Input> was created without expected prop 'handleChange'");
     		}
 
-    		if (/*placeholder*/ ctx[1] === undefined && !("placeholder" in props)) {
+    		if (/*placeholder*/ ctx[2] === undefined && !("placeholder" in props)) {
     			console.warn("<Input> was created without expected prop 'placeholder'");
     		}
     	}
@@ -702,6 +721,14 @@ var app = (function () {
     	}
 
     	set handleChange(value) {
+    		throw new Error("<Input>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get label() {
+    		throw new Error("<Input>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set label(value) {
     		throw new Error("<Input>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
@@ -1455,6 +1482,7 @@ var app = (function () {
 
     	const input = new Input({
     			props: {
+    				label: "token",
     				handleChange: /*handleChange*/ ctx[1],
     				placeholder: "Set your token"
     			},
@@ -1471,13 +1499,13 @@ var app = (function () {
     			t1 = text("Submit\r\n      ");
     			span = element("span");
     			span.textContent = "→";
-    			attr_dev(span, "class", "animate svelte-8nb9xf");
-    			add_location(span, file$7, 66, 6, 1204);
-    			attr_dev(button, "class", "svelte-8nb9xf");
-    			add_location(button, file$7, 64, 4, 1174);
-    			add_location(div, file$7, 63, 2, 1163);
-    			attr_dev(form, "class", "svelte-8nb9xf");
-    			add_location(form, file$7, 61, 0, 1056);
+    			attr_dev(span, "class", "animate svelte-17o3foj");
+    			add_location(span, file$7, 68, 6, 1280);
+    			attr_dev(button, "class", "svelte-17o3foj");
+    			add_location(button, file$7, 66, 4, 1250);
+    			add_location(div, file$7, 65, 2, 1239);
+    			attr_dev(form, "class", "svelte-17o3foj");
+    			add_location(form, file$7, 63, 0, 1118);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");

@@ -33,6 +33,7 @@
     cursor: pointer;
     position: relative;
     font-weight: 200;
+    color: var(--theme-font);
   }
 
   .animate {
@@ -40,6 +41,7 @@
     width: 1.1rem;
     top: 0;
     right: -1.1rem;
+    color: var(--theme-font);
   }
 
   button:hover > .animate {
@@ -60,7 +62,7 @@
 </style>
 
 <form on:submit={event => handleClick(event)}>
-  <Input {handleChange} placeholder="Set your token" />
+  <Input label="token" {handleChange} placeholder="Set your token" />
   <div>
     <button>
       Submit

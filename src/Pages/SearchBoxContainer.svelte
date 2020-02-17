@@ -27,19 +27,23 @@
     "system.id": id,
     "system.title": title
   }) {
-    const branchName = getBranchName(type, id, title);
-    newBranchName.update(newBranchName => (newBranchName = branchName));
-    copyToClipboard(branchName);
+    copyToClipboard(getBranchName(type, id, title));
   }
 
   function copyToClipboard(branchName) {
-    const listener = e => {
-      e.clipboardData.setData("text/plain", branchName);
-      e.preventDefault();
-    };
-    document.addEventListener("copy", listener, false);
-    document.execCommand("copy");
-    document.removeEventListener("copy", listener, false);
+    if (navigator.clipboard) {
+      navigator.clipboard
+        .writeText(branchName)
+        .then(() => newBranchName.update(name => (name = branchName)));
+    } else {
+      const listener = e => {
+        e.clipboardData.setData("text/plain", branchName);
+        e.preventDefault();
+      };
+      document.addEventListener("copy", listener, false);
+      document.execCommand("copy");
+      document.removeEventListener("copy", listener, false);
+    }
   }
 </script>
 

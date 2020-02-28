@@ -14,6 +14,12 @@ body {
   text-rendering: optimizeLegibility;
   overflow: hidden;
   background-color: var(--theme-background-color);
+}
+
+body.color-theme-in-transition,
+body.color-theme-in-transition *,
+body.color-theme-in-transition *:before,
+body.color-theme-in-transition *:after {
   transition: background-color 1s ease-in-out;
 }
 

@@ -1391,18 +1391,18 @@ var app = (function () {
     			div1.textContent = "Dark";
     			t3 = space();
     			div2 = element("div");
-    			attr_dev(div0, "class", "toggle-light svelte-1x2tq7r");
-    			add_location(div0, file$6, 70, 4, 1310);
-    			attr_dev(div1, "class", "toggle-dark svelte-1x2tq7r");
-    			add_location(div1, file$6, 71, 4, 1391);
-    			attr_dev(div2, "class", "selected svelte-1x2tq7r");
+    			attr_dev(div0, "class", "toggle-light svelte-1buidv3");
+    			add_location(div0, file$6, 74, 4, 1517);
+    			attr_dev(div1, "class", "toggle-dark svelte-1buidv3");
+    			add_location(div1, file$6, 75, 4, 1598);
+    			attr_dev(div2, "class", "selected svelte-1buidv3");
     			toggle_class(div2, "light", /*selectedTheme*/ ctx[0] === "light");
     			toggle_class(div2, "dark", /*selectedTheme*/ ctx[0] === "dark");
-    			add_location(div2, file$6, 72, 4, 1469);
-    			attr_dev(div3, "class", "toggle svelte-1x2tq7r");
-    			add_location(div3, file$6, 69, 2, 1284);
-    			attr_dev(div4, "class", "container svelte-1x2tq7r");
-    			add_location(div4, file$6, 68, 0, 1257);
+    			add_location(div2, file$6, 76, 4, 1676);
+    			attr_dev(div3, "class", "toggle svelte-1buidv3");
+    			add_location(div3, file$6, 73, 2, 1491);
+    			attr_dev(div4, "class", "container svelte-1buidv3");
+    			add_location(div4, file$6, 72, 0, 1464);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1449,8 +1449,13 @@ var app = (function () {
     	return block;
     }
 
+    const transitionClass = "color-theme-in-transition";
+
     function switchTheme(selected) {
     	theme.update(theme => theme = selected);
+    	const { classList } = document.body;
+    	classList.add(transitionClass);
+    	window.setTimeout(() => classList.remove(transitionClass), 1000);
     }
 
     function instance$5($$self, $$props, $$invalidate) {

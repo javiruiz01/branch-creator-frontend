@@ -1,6 +1,7 @@
 <script>
   import { theme } from "../Store";
 
+  const transitionClass = "color-theme-in-transition";
   let selectedTheme;
   theme.subscribe(value => {
     selectedTheme = value;
@@ -9,6 +10,9 @@
 
   function switchTheme(selected) {
     theme.update(theme => (theme = selected));
+    const { classList } = document.body;
+    classList.add(transitionClass);
+    window.setTimeout(() => classList.remove(transitionClass), 1000);
   }
 </script>
 
@@ -53,7 +57,7 @@
     height: 2.5rem;
     width: 75px;
     top: 4px;
-    transition: all .1s ease-in-out;
+    transition: all 0.1s ease-in-out;
   }
 
   .light {

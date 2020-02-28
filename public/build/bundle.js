@@ -1242,7 +1242,7 @@ var app = (function () {
     			t1 = space();
     			create_component(list.$$.fragment);
     			attr_dev(div, "class", "search-box svelte-gp6mnc");
-    			add_location(div, file$4, 63, 0, 1587);
+    			add_location(div, file$4, 64, 0, 1658);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1318,7 +1318,8 @@ var app = (function () {
     function handleKeyDown(event) {
     	if (event.code === "ArrowDown") {
     		event.preventDefault();
-    		document.body.querySelector(".result_0").focus();
+    		const firstListElement = document.body.querySelector(".result_0");
+    		if (firstListElement) firstListElement.focus();
     	}
     }
 

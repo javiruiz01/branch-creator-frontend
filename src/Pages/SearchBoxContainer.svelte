@@ -47,9 +47,10 @@
   }
 
   function handleKeyDown(event) {
-    if (event.code === 'ArrowDown') {
+    if (event.code === "ArrowDown") {
       event.preventDefault();
-      document.body.querySelector(".result_0").focus();
+      const firstListElement = document.body.querySelector(".result_0");
+      if (firstListElement) firstListElement.focus();
     }
   }
 </script>

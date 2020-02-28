@@ -23,6 +23,11 @@
     color: var(--theme-font);
   }
 
+  .input:focus {
+    border-color: #0070c9;
+    box-shadow: 0 0 0 3px rgba(131, 192, 253, 0.5);
+  }
+
   .input:focus + .input__label,
   .input:not(:placeholder-shown) + .input__label {
     top: 0.625rem;
@@ -42,6 +47,12 @@
 </style>
 
 <div class="input-container">
-  <input placeholder=" " id={label} class="input" on:input={handleChange} type="text" />
+  <input
+    placeholder="
+    "
+    id={label}
+    class="input"
+    on:input={handleChange}
+    type="text" />
   <label class="input__label" for={label}>{placeholder}</label>
 </div>

@@ -43,6 +43,13 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    outline: 0;
+    -webkit-appearance: none;
+  }
+  .result:focus {
+    border: 1px solid #0070c9;
+    box-shadow: 0 0 0 1px rgba(131, 192, 253, 0.5);
+    border-radius: 4px;
   }
 
   .result:hover {
@@ -62,9 +69,9 @@
   }
 </style>
 
-<ul class="results scrollable-container" bind:this={div}>
+<ul tabindex="-1" class="results scrollable-container" bind:this={div}>
   {#each list as { fields }}
-    <li class="result" on:click={() => handleSelection(fields)}>
+    <li class="result" tabindex="0" on:click={() => handleSelection(fields)}>
       <div>
         <div
           class="result__icon"

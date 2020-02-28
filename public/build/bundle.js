@@ -612,16 +612,16 @@ var app = (function () {
     			t0 = space();
     			label_1 = element("label");
     			t1 = text(/*placeholder*/ ctx[2]);
-    			attr_dev(input, "placeholder", " ");
+    			attr_dev(input, "placeholder", "\r\n    ");
     			attr_dev(input, "id", /*label*/ ctx[1]);
-    			attr_dev(input, "class", "input svelte-fjr0mm");
+    			attr_dev(input, "class", "input svelte-1k9tfb3");
     			attr_dev(input, "type", "text");
-    			add_location(input, file$1, 44, 2, 911);
-    			attr_dev(label_1, "class", "input__label svelte-fjr0mm");
+    			add_location(input, file$1, 49, 2, 1017);
+    			attr_dev(label_1, "class", "input__label svelte-1k9tfb3");
     			attr_dev(label_1, "for", /*label*/ ctx[1]);
-    			add_location(label_1, file$1, 45, 2, 1001);
-    			attr_dev(div, "class", "input-container svelte-fjr0mm");
-    			add_location(div, file$1, 43, 0, 878);
+    			add_location(label_1, file$1, 56, 2, 1137);
+    			attr_dev(div, "class", "input-container svelte-1k9tfb3");
+    			add_location(div, file$1, 48, 0, 984);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -768,7 +768,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (66:2) {#each list as { fields }}
+    // (73:2) {#each list as { fields }}
     function create_each_block(ctx) {
     	let li;
     	let div1;
@@ -793,14 +793,15 @@ var app = (function () {
     			div2 = element("div");
     			t1 = text(t1_value);
     			t2 = space();
-    			attr_dev(div0, "class", "result__icon svelte-6i674v");
+    			attr_dev(div0, "class", "result__icon svelte-xd55gn");
     			set_style(div0, "--backgroundColor", getBackgroundColor(/*fields*/ ctx[6]));
-    			add_location(div0, file$2, 68, 8, 1480);
-    			add_location(div1, file$2, 67, 6, 1465);
-    			attr_dev(div2, "class", "result__title svelte-6i674v");
-    			add_location(div2, file$2, 72, 6, 1607);
-    			attr_dev(li, "class", "result svelte-6i674v");
-    			add_location(li, file$2, 66, 4, 1397);
+    			add_location(div0, file$2, 75, 8, 1689);
+    			add_location(div1, file$2, 74, 6, 1674);
+    			attr_dev(div2, "class", "result__title svelte-xd55gn");
+    			add_location(div2, file$2, 79, 6, 1816);
+    			attr_dev(li, "class", "result svelte-xd55gn");
+    			attr_dev(li, "tabindex", "0");
+    			add_location(li, file$2, 73, 4, 1593);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -831,7 +832,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(66:2) {#each list as { fields }}",
+    		source: "(73:2) {#each list as { fields }}",
     		ctx
     	});
 
@@ -855,8 +856,9 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(ul, "class", "results scrollable-container svelte-6i674v");
-    			add_location(ul, file$2, 64, 0, 1304);
+    			attr_dev(ul, "tabindex", "-1");
+    			attr_dev(ul, "class", "results scrollable-container svelte-xd55gn");
+    			add_location(ul, file$2, 71, 0, 1486);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");

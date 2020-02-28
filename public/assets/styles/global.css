@@ -12,10 +12,9 @@
 
 body {
   text-rendering: optimizeLegibility;
-  height: 100%;
   overflow: hidden;
   background-color: var(--theme-background-color);
-  transition: all 1s ease-in-out;
+  transition: background-color 1s ease-in-out;
 }
 
 :root {

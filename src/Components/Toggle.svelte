@@ -53,15 +53,16 @@
     height: 2.5rem;
     width: 75px;
     top: 4px;
-    transition: all 1s ease-in-out;
+    transition: all .1s ease-in-out;
   }
 
   .light {
     left: 4px;
+    transform: translate(0);
   }
 
   .dark {
-    right: 4px;
+    transform: translate(110%);
   }
 </style>
 

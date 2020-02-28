@@ -2,6 +2,7 @@
   export let handleChange;
   export let label = "";
   export let placeholder;
+  export let handleKeyDown = () => {};
 </script>
 
 <style>
@@ -53,6 +54,7 @@
     id={label}
     class="input"
     on:input={handleChange}
+    on:keydown={handleKeyDown}
     type="text" />
   <label class="input__label" for={label}>{placeholder}</label>
 </div>

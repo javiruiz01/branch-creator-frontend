@@ -45,6 +45,13 @@
       document.removeEventListener("copy", listener, false);
     }
   }
+
+  function handleKeyDown(event) {
+    if (event.code === 'ArrowDown') {
+      event.preventDefault();
+      document.body.querySelector(".result_0").focus();
+    }
+  }
 </script>
 
 <style>
@@ -55,7 +62,11 @@
 </style>
 
 <div class="search-box">
-  <Input {handleChange} placeholder="Work item Id" />
+  <Input
+    {handleChange}
+    {handleKeyDown}
+    placeholder="Work item Id"
+    label="searchbox" />
   <Loader {loading} />
   <List list={searchResults} {handleSelection} />
 </div>

@@ -17,12 +17,41 @@
     }
   });
 
+  function handleArrowKeys(nextSelectableElement) {
+    nextSelectableElement =
+      nextSelectableElement || document.body.querySelector("#searchbox");
+    nextSelectableElement.focus();
+  }
+
   function getBackgroundColor({ "system.workitemtype": type }) {
     return workItemTypes[type].color;
   }
 
   function getTitle({ "system.title": title }) {
     return title;
+  }
+
+  function onKeyDown(event, fields) {
+    const {
+      code,
+      target: { previousSibling, nextSibling }
+    } = event;
+
+    switch (code) {
+      case "Space":
+      case "Enter":
+        event.preventDefault();
+        handleSelection(fields);
+        break;
+      case "ArrowUp":
+        event.preventDefault();
+        handleArrowKeys(previousSibling);
+        break;
+      case "ArrowDown":
+        event.preventDefault();
+        handleArrowKeys(nextSibling);
+        break;
+    }
   }
 </script>
 
@@ -70,8 +99,12 @@
 </style>
 
 <ul tabindex="-1" class="results scrollable-container" bind:this={div}>
-  {#each list as { fields }}
-    <li class="result" tabindex="0" on:click={() => handleSelection(fields)}>
+  {#each list as { fields }, i}
+    <li
+      class="result result_{i}"
+      tabindex="0"
+      on:keydown={e => onKeyDown(e, fields)}
+      on:click={() => handleSelection(fields)}>
       <div>
         <div
           class="result__icon"

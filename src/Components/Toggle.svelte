@@ -14,6 +14,13 @@
     classList.add(transitionClass);
     window.setTimeout(() => classList.remove(transitionClass), 1000);
   }
+
+  function handleKeyDown(event, theme) {
+    if (event.code === "Space" || event.code === "Enter") {
+      event.preventDefault();
+      switchTheme(theme);
+    }
+  }
 </script>
 
 <style>
@@ -41,6 +48,17 @@
     padding: 1rem;
     cursor: pointer;
     width: 80px;
+  }
+
+  .focusable {
+    outline: 0;
+    border: 0;
+  }
+
+  .focusable:focus {
+    border-color: #0070c9;
+    box-shadow: 0 0 0 3px rgba(131, 192, 253, 0.5);
+    border-radius: 4px;
   }
 
   .toggle-light {
@@ -72,8 +90,22 @@
 
 <div class="container">
   <div class="toggle">
-    <div class="toggle-light" on:click={() => switchTheme('light')}>Ligth</div>
-    <div class="toggle-dark" on:click={() => switchTheme('dark')}>Dark</div>
+    <div
+      class="toggle-light focusable "
+      tabindex="0"
+      on:keydown={e => handleKeyDown(e, 'light')}
+      on:click={() => switchTheme('light')}
+      aria-label="Set light theme">
+      Ligth
+    </div>
+    <div
+      class="toggle-dark focusable "
+      tabindex="0"
+      on:keydown={e => handleKeyDown(e, 'dark')}
+      on:click={() => switchTheme('dark')}
+      aria-label="Set dark theme">
+      Dark
+    </div>
     <div
       class="selected"
       class:light={selectedTheme === 'light'}

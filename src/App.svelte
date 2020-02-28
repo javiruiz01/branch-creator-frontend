@@ -40,7 +40,6 @@
   }
 </style>
 
-<Toggle />
 <Toaster />
 <main class="center">
   <div class="container">
@@ -54,4 +53,5 @@
     {/if}
   </div>
 </main>
+<Toggle />
 <Footer />

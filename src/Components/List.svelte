@@ -17,7 +17,7 @@
     }
   });
 
-  function handleArrowKeys(nextSelectableElement) {
+  function focusElementOrDefault(nextSelectableElement) {
     nextSelectableElement =
       nextSelectableElement || document.body.querySelector("#searchbox");
     nextSelectableElement.focus();
@@ -32,12 +32,7 @@
   }
 
   function onKeyDown(event, fields) {
-    const {
-      code,
-      target: { previousSibling, nextSibling }
-    } = event;
-
-    switch (code) {
+    switch (event.code) {
       case "Space":
       case "Enter":
         event.preventDefault();
@@ -45,12 +40,19 @@
         break;
       case "ArrowUp":
         event.preventDefault();
-        handleArrowKeys(previousSibling);
+        focusElementOrDefault(event.target.previousSibling);
         break;
       case "ArrowDown":
         event.preventDefault();
-        handleArrowKeys(nextSibling);
+        focusElementOrDefault(event.target.nextSibling);
         break;
+      case "ShiftLeft":
+      case "ShiftRight":
+      case "Tab":
+        break;
+      default:
+        event.preventDefault();
+        focusElementOrDefault(null);
     }
   }
 </script>

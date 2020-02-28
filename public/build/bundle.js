@@ -802,7 +802,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (102:2) {#each list as { fields }
+    // (104:2) {#each list as { fields }
     function create_each_block(ctx) {
     	let li;
     	let div1;
@@ -834,13 +834,13 @@ var app = (function () {
     			t2 = space();
     			attr_dev(div0, "class", "result__icon svelte-xd55gn");
     			set_style(div0, "--backgroundColor", getBackgroundColor(/*fields*/ ctx[8]));
-    			add_location(div0, file$2, 108, 8, 2489);
-    			add_location(div1, file$2, 107, 6, 2474);
+    			add_location(div0, file$2, 110, 8, 2620);
+    			add_location(div1, file$2, 109, 6, 2605);
     			attr_dev(div2, "class", "result__title svelte-xd55gn");
-    			add_location(div2, file$2, 112, 6, 2616);
+    			add_location(div2, file$2, 114, 6, 2747);
     			attr_dev(li, "class", li_class_value = "result result_" + /*i*/ ctx[10] + " svelte-xd55gn");
     			attr_dev(li, "tabindex", "0");
-    			add_location(li, file$2, 102, 4, 2315);
+    			add_location(li, file$2, 104, 4, 2446);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -875,7 +875,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(102:2) {#each list as { fields }",
+    		source: "(104:2) {#each list as { fields }",
     		ctx
     	});
 
@@ -901,7 +901,7 @@ var app = (function () {
 
     			attr_dev(ul, "tabindex", "-1");
     			attr_dev(ul, "class", "results scrollable-container svelte-xd55gn");
-    			add_location(ul, file$2, 100, 0, 2205);
+    			add_location(ul, file$2, 102, 0, 2336);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -959,7 +959,7 @@ var app = (function () {
     	return block;
     }
 
-    function handleArrowKeys(nextSelectableElement) {
+    function focusElementOrDefault(nextSelectableElement) {
     	nextSelectableElement = nextSelectableElement || document.body.querySelector("#searchbox");
     	nextSelectableElement.focus();
     }
@@ -989,9 +989,7 @@ var app = (function () {
     	});
 
     	function onKeyDown(event, fields) {
-    		const { code, target: { previousSibling, nextSibling } } = event;
-
-    		switch (code) {
+    		switch (event.code) {
     			case "Space":
     			case "Enter":
     				event.preventDefault();
@@ -999,12 +997,19 @@ var app = (function () {
     				break;
     			case "ArrowUp":
     				event.preventDefault();
-    				handleArrowKeys(previousSibling);
+    				focusElementOrDefault(event.target.previousSibling);
     				break;
     			case "ArrowDown":
     				event.preventDefault();
-    				handleArrowKeys(nextSibling);
+    				focusElementOrDefault(event.target.nextSibling);
     				break;
+    			case "ShiftLeft":
+    			case "ShiftRight":
+    			case "Tab":
+    				break;
+    			default:
+    				event.preventDefault();
+    				focusElementOrDefault(null);
     		}
     	}
 
@@ -1479,18 +1484,22 @@ var app = (function () {
     			div1.textContent = "Dark";
     			t3 = space();
     			div2 = element("div");
-    			attr_dev(div0, "class", "toggle-light svelte-1buidv3");
-    			add_location(div0, file$6, 74, 4, 1517);
-    			attr_dev(div1, "class", "toggle-dark svelte-1buidv3");
-    			add_location(div1, file$6, 75, 4, 1598);
-    			attr_dev(div2, "class", "selected svelte-1buidv3");
+    			attr_dev(div0, "class", "toggle-light focusable  svelte-1lnunjw");
+    			attr_dev(div0, "tabindex", "0");
+    			attr_dev(div0, "aria-label", "Set light theme");
+    			add_location(div0, file$6, 92, 4, 1883);
+    			attr_dev(div1, "class", "toggle-dark focusable  svelte-1lnunjw");
+    			attr_dev(div1, "tabindex", "0");
+    			attr_dev(div1, "aria-label", "Set dark theme");
+    			add_location(div1, file$6, 100, 4, 2110);
+    			attr_dev(div2, "class", "selected svelte-1lnunjw");
     			toggle_class(div2, "light", /*selectedTheme*/ ctx[0] === "light");
     			toggle_class(div2, "dark", /*selectedTheme*/ ctx[0] === "dark");
-    			add_location(div2, file$6, 76, 4, 1676);
-    			attr_dev(div3, "class", "toggle svelte-1buidv3");
-    			add_location(div3, file$6, 73, 2, 1491);
-    			attr_dev(div4, "class", "container svelte-1buidv3");
-    			add_location(div4, file$6, 72, 0, 1464);
+    			add_location(div2, file$6, 108, 4, 2332);
+    			attr_dev(div3, "class", "toggle svelte-1lnunjw");
+    			add_location(div3, file$6, 91, 2, 1857);
+    			attr_dev(div4, "class", "container svelte-1lnunjw");
+    			add_location(div4, file$6, 90, 0, 1830);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1505,8 +1514,10 @@ var app = (function () {
     			append_dev(div3, div2);
 
     			dispose = [
-    				listen_dev(div0, "click", /*click_handler*/ ctx[1], false, false, false),
-    				listen_dev(div1, "click", /*click_handler_1*/ ctx[2], false, false, false)
+    				listen_dev(div0, "keydown", /*keydown_handler*/ ctx[1], false, false, false),
+    				listen_dev(div0, "click", /*click_handler*/ ctx[2], false, false, false),
+    				listen_dev(div1, "keydown", /*keydown_handler_1*/ ctx[3], false, false, false),
+    				listen_dev(div1, "click", /*click_handler_1*/ ctx[4], false, false, false)
     			];
     		},
     		p: function update(ctx, [dirty]) {
@@ -1546,6 +1557,13 @@ var app = (function () {
     	window.setTimeout(() => classList.remove(transitionClass), 1000);
     }
 
+    function handleKeyDown$1(event, theme) {
+    	if (event.code === "Space" || event.code === "Enter") {
+    		event.preventDefault();
+    		switchTheme(theme);
+    	}
+    }
+
     function instance$5($$self, $$props, $$invalidate) {
     	let selectedTheme;
 
@@ -1554,7 +1572,9 @@ var app = (function () {
     		document.documentElement.setAttribute("data-theme", value);
     	});
 
+    	const keydown_handler = e => handleKeyDown$1(e, "light");
     	const click_handler = () => switchTheme("light");
+    	const keydown_handler_1 = e => handleKeyDown$1(e, "dark");
     	const click_handler_1 = () => switchTheme("dark");
 
     	$$self.$capture_state = () => {
@@ -1565,7 +1585,13 @@ var app = (function () {
     		if ("selectedTheme" in $$props) $$invalidate(0, selectedTheme = $$props.selectedTheme);
     	};
 
-    	return [selectedTheme, click_handler, click_handler_1];
+    	return [
+    		selectedTheme,
+    		keydown_handler,
+    		click_handler,
+    		keydown_handler_1,
+    		click_handler_1
+    	];
     }
 
     class Toggle extends SvelteComponentDev {
@@ -1706,7 +1732,7 @@ var app = (function () {
     /* src\App.svelte generated by Svelte v3.18.2 */
     const file$8 = "src\\App.svelte";
 
-    // (52:4) {:else}
+    // (51:4) {:else}
     function create_else_block(ctx) {
     	let current;
     	const token_1 = new Token({ $$inline: true });
@@ -1737,14 +1763,14 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(52:4) {:else}",
+    		source: "(51:4) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (50:4) {#if $token}
+    // (49:4) {#if $token}
     function create_if_block(ctx) {
     	let current;
     	const searchboxcontainer = new SearchBoxContainer({ $$inline: true });
@@ -1775,7 +1801,7 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(50:4) {#if $token}",
+    		source: "(49:4) {#if $token}",
     		ctx
     	});
 
@@ -1784,17 +1810,16 @@ var app = (function () {
 
     function create_fragment$8(ctx) {
     	let t0;
-    	let t1;
     	let main;
     	let div1;
     	let div0;
     	let h1;
-    	let t3;
+    	let t2;
     	let current_block_type_index;
     	let if_block;
+    	let t3;
     	let t4;
     	let current;
-    	const toggle = new Toggle({ $$inline: true });
     	const toaster = new Toaster({ $$inline: true });
     	const if_block_creators = [create_if_block, create_else_block];
     	const if_blocks = [];
@@ -1806,46 +1831,47 @@ var app = (function () {
 
     	current_block_type_index = select_block_type(ctx);
     	if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+    	const toggle = new Toggle({ $$inline: true });
     	const footer = new Footer({ $$inline: true });
 
     	const block = {
     		c: function create() {
-    			create_component(toggle.$$.fragment);
-    			t0 = space();
     			create_component(toaster.$$.fragment);
-    			t1 = space();
+    			t0 = space();
     			main = element("main");
     			div1 = element("div");
     			div0 = element("div");
     			h1 = element("h1");
     			h1.textContent = "Branch creator";
-    			t3 = space();
+    			t2 = space();
     			if_block.c();
+    			t3 = space();
+    			create_component(toggle.$$.fragment);
     			t4 = space();
     			create_component(footer.$$.fragment);
     			attr_dev(h1, "class", "svelte-1g341s");
-    			add_location(h1, file$8, 47, 6, 992);
+    			add_location(h1, file$8, 46, 6, 981);
     			attr_dev(div0, "class", "title svelte-1g341s");
-    			add_location(div0, file$8, 46, 4, 966);
+    			add_location(div0, file$8, 45, 4, 955);
     			attr_dev(div1, "class", "container svelte-1g341s");
-    			add_location(div1, file$8, 45, 2, 938);
+    			add_location(div1, file$8, 44, 2, 927);
     			attr_dev(main, "class", "center svelte-1g341s");
-    			add_location(main, file$8, 44, 0, 914);
+    			add_location(main, file$8, 43, 0, 903);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			mount_component(toggle, target, anchor);
-    			insert_dev(target, t0, anchor);
     			mount_component(toaster, target, anchor);
-    			insert_dev(target, t1, anchor);
+    			insert_dev(target, t0, anchor);
     			insert_dev(target, main, anchor);
     			append_dev(main, div1);
     			append_dev(div1, div0);
     			append_dev(div0, h1);
-    			append_dev(div1, t3);
+    			append_dev(div1, t2);
     			if_blocks[current_block_type_index].m(div1, null);
+    			insert_dev(target, t3, anchor);
+    			mount_component(toggle, target, anchor);
     			insert_dev(target, t4, anchor);
     			mount_component(footer, target, anchor);
     			current = true;
@@ -1875,26 +1901,26 @@ var app = (function () {
     		},
     		i: function intro(local) {
     			if (current) return;
-    			transition_in(toggle.$$.fragment, local);
     			transition_in(toaster.$$.fragment, local);
     			transition_in(if_block);
+    			transition_in(toggle.$$.fragment, local);
     			transition_in(footer.$$.fragment, local);
     			current = true;
     		},
     		o: function outro(local) {
-    			transition_out(toggle.$$.fragment, local);
     			transition_out(toaster.$$.fragment, local);
     			transition_out(if_block);
+    			transition_out(toggle.$$.fragment, local);
     			transition_out(footer.$$.fragment, local);
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			destroy_component(toggle, detaching);
-    			if (detaching) detach_dev(t0);
     			destroy_component(toaster, detaching);
-    			if (detaching) detach_dev(t1);
+    			if (detaching) detach_dev(t0);
     			if (detaching) detach_dev(main);
     			if_blocks[current_block_type_index].d();
+    			if (detaching) detach_dev(t3);
+    			destroy_component(toggle, detaching);
     			if (detaching) detach_dev(t4);
     			destroy_component(footer, detaching);
     		}

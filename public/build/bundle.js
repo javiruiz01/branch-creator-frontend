@@ -832,15 +832,15 @@ var app = (function () {
     			div2 = element("div");
     			t1 = text(t1_value);
     			t2 = space();
-    			attr_dev(div0, "class", "result__icon svelte-xd55gn");
+    			attr_dev(div0, "class", "result__icon svelte-1rfn8ak");
     			set_style(div0, "--backgroundColor", getBackgroundColor(/*fields*/ ctx[8]));
-    			add_location(div0, file$2, 110, 8, 2620);
-    			add_location(div1, file$2, 109, 6, 2605);
-    			attr_dev(div2, "class", "result__title svelte-xd55gn");
-    			add_location(div2, file$2, 114, 6, 2747);
-    			attr_dev(li, "class", li_class_value = "result result_" + /*i*/ ctx[10] + " svelte-xd55gn");
+    			add_location(div0, file$2, 110, 8, 2510);
+    			add_location(div1, file$2, 109, 6, 2496);
+    			attr_dev(div2, "class", "result__title svelte-1rfn8ak");
+    			add_location(div2, file$2, 114, 6, 2633);
+    			attr_dev(li, "class", li_class_value = "result result_" + /*i*/ ctx[10] + " svelte-1rfn8ak");
     			attr_dev(li, "tabindex", "0");
-    			add_location(li, file$2, 104, 4, 2446);
+    			add_location(li, file$2, 104, 4, 2342);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -900,8 +900,8 @@ var app = (function () {
     			}
 
     			attr_dev(ul, "tabindex", "-1");
-    			attr_dev(ul, "class", "results scrollable-container svelte-xd55gn");
-    			add_location(ul, file$2, 102, 0, 2336);
+    			attr_dev(ul, "class", "results scrollable-container svelte-1rfn8ak");
+    			add_location(ul, file$2, 102, 0, 2234);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");

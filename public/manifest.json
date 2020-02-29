@@ -1,0 +1,16 @@
+{
+  "name": "bc - branch creator",
+  "short_name": "bc",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#2A3443",
+  "description": "An app for creating your branch name based on an Azure work item",
+  "theme_color": "#465a64",
+  "icons": [
+    {
+      "src": "./favicon.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    }
+  ]
+}

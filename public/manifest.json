@@ -1,15 +1,38 @@
 {
   "name": "bc - branch creator",
+  "dir": "ltr",
+  "lang": "en-us",
   "short_name": "bc",
   "start_url": ".",
-  "display": "standalone",
-  "background_color": "#2A3443",
+  "display": "fullscreen",
+  "background_color": "white",
   "description": "An app for creating your branch name based on an Azure work item",
-  "theme_color": "#465a64",
+  "theme_color": "white",
+  "orientation": "portrait",
   "icons": [
     {
-      "src": "./favicon.png",
-      "sizes": "128x128",
+      "src": "./assets/icons/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "./assets/icons/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "./assets/icons/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "./assets/icons/logo-white.png",
+      "sizes": "342x342",
+      "type": "image/png"
+    },
+    {
+      "src": "./assets/icons/logo-512.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ]

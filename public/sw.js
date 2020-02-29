@@ -11,12 +11,8 @@ var filesToCache = [
 ];
 
 self.addEventListener('install', event => {
-  console.log('[ServiceWorker] Install');
   event.waitUntil(
-    caches.open(cacheName).then(cache => {
-      console.log('[ServiceWorker] Caching app shell');
-      return cache.addAll(filesToCache);
-    })
+    caches.open(cacheName).then(cache => cache.addAll(filesToCache))
   );
 });
 
@@ -25,10 +21,9 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
-  console.log(event);
   event.respondWith(
-    caches.match(event.request, { ignoreSearch: true }).then(response => {
-      return response ? response : fetch(event.request);
-    })
+    caches
+      .match(event.request, { ignoreSearch: true })
+      .then(response => (response ? response : fetch(event.request)))
   );
 });

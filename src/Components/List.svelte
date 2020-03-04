@@ -4,18 +4,6 @@
 
   export let list;
   export let handleSelection;
-  let autoscroll;
-  let div;
-
-  beforeUpdate(() => {
-    autoscroll = div && div.offsetHeight + div.scrollTop > div.scrollHeight;
-  });
-
-  afterUpdate(() => {
-    if (autoscroll) {
-      div.scrollTo(0, div.scrollHeight);
-    }
-  });
 
   function focusElementOrDefault(nextSelectableElement) {
     nextSelectableElement =
@@ -66,9 +54,13 @@
     max-height: 18.75rem;
     overflow-y: auto;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .result {
+    border: 1px solid transparent;
     padding: 0.625rem 0.9375rem;
     cursor: pointer;
     display: flex;
@@ -76,11 +68,22 @@
     align-items: center;
     outline: 0;
     -webkit-appearance: none;
+    width: calc(100% - 6px);
   }
+
+  .result:first-child {
+    margin-top: 3px;
+  }
+
+  .result:last-child {
+    margin-bottom: 3px;
+  }
+
   .result:focus {
-    border: 1px solid #0070c9;
-    box-shadow: 0 0 0 1px rgba(131, 192, 253, 0.5);
+    border: 1px solid rgba(131, 192, 253, 0.5);
+    box-shadow: 0 0 0 3px rgba(131, 192, 253, 0.5);
     border-radius: 4px;
+    outline: none;
   }
 
   .result:hover {
@@ -100,7 +103,7 @@
   }
 </style>
 
-<ul tabindex="-1" class="results scrollable-container" bind:this={div}>
+<ul tabindex="-1" class="results scrollable-container">
   {#each list as { fields }, i}
     <li
       class="result result_{i}"

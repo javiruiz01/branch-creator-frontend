@@ -93,17 +93,6 @@ var app = (function () {
     function set_current_component(component) {
         current_component = component;
     }
-    function get_current_component() {
-        if (!current_component)
-            throw new Error(`Function called outside component initialization`);
-        return current_component;
-    }
-    function beforeUpdate(fn) {
-        get_current_component().$$.before_update.push(fn);
-    }
-    function afterUpdate(fn) {
-        get_current_component().$$.after_update.push(fn);
-    }
 
     const dirty_components = [];
     const binding_callbacks = [];
@@ -797,30 +786,30 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[8] = list[i].fields;
-    	child_ctx[10] = i;
+    	child_ctx[5] = list[i].fields;
+    	child_ctx[7] = i;
     	return child_ctx;
     }
 
-    // (104:2) {#each list as { fields }
+    // (107:2) {#each list as { fields }
     function create_each_block(ctx) {
     	let li;
     	let div1;
     	let div0;
     	let t0;
     	let div2;
-    	let t1_value = getTitle(/*fields*/ ctx[8]) + "";
+    	let t1_value = getTitle(/*fields*/ ctx[5]) + "";
     	let t1;
     	let t2;
     	let li_class_value;
     	let dispose;
 
     	function keydown_handler(...args) {
-    		return /*keydown_handler*/ ctx[5](/*fields*/ ctx[8], ...args);
+    		return /*keydown_handler*/ ctx[3](/*fields*/ ctx[5], ...args);
     	}
 
     	function click_handler(...args) {
-    		return /*click_handler*/ ctx[6](/*fields*/ ctx[8], ...args);
+    		return /*click_handler*/ ctx[4](/*fields*/ ctx[5], ...args);
     	}
 
     	const block = {
@@ -832,15 +821,15 @@ var app = (function () {
     			div2 = element("div");
     			t1 = text(t1_value);
     			t2 = space();
-    			attr_dev(div0, "class", "result__icon svelte-1rfn8ak");
-    			set_style(div0, "--backgroundColor", getBackgroundColor(/*fields*/ ctx[8]));
-    			add_location(div0, file$2, 110, 8, 2510);
-    			add_location(div1, file$2, 109, 6, 2496);
-    			attr_dev(div2, "class", "result__title svelte-1rfn8ak");
-    			add_location(div2, file$2, 114, 6, 2633);
-    			attr_dev(li, "class", li_class_value = "result result_" + /*i*/ ctx[10] + " svelte-1rfn8ak");
+    			attr_dev(div0, "class", "result__icon svelte-hojuff");
+    			set_style(div0, "--backgroundColor", getBackgroundColor(/*fields*/ ctx[5]));
+    			add_location(div0, file$2, 113, 8, 2535);
+    			add_location(div1, file$2, 112, 6, 2521);
+    			attr_dev(div2, "class", "result__title svelte-hojuff");
+    			add_location(div2, file$2, 117, 6, 2658);
+    			attr_dev(li, "class", li_class_value = "result result_" + /*i*/ ctx[7] + " svelte-hojuff");
     			attr_dev(li, "tabindex", "0");
-    			add_location(li, file$2, 104, 4, 2342);
+    			add_location(li, file$2, 107, 4, 2367);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -860,10 +849,10 @@ var app = (function () {
     			ctx = new_ctx;
 
     			if (dirty & /*list*/ 1) {
-    				set_style(div0, "--backgroundColor", getBackgroundColor(/*fields*/ ctx[8]));
+    				set_style(div0, "--backgroundColor", getBackgroundColor(/*fields*/ ctx[5]));
     			}
 
-    			if (dirty & /*list*/ 1 && t1_value !== (t1_value = getTitle(/*fields*/ ctx[8]) + "")) set_data_dev(t1, t1_value);
+    			if (dirty & /*list*/ 1 && t1_value !== (t1_value = getTitle(/*fields*/ ctx[5]) + "")) set_data_dev(t1, t1_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(li);
@@ -875,7 +864,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(104:2) {#each list as { fields }",
+    		source: "(107:2) {#each list as { fields }",
     		ctx
     	});
 
@@ -900,8 +889,8 @@ var app = (function () {
     			}
 
     			attr_dev(ul, "tabindex", "-1");
-    			attr_dev(ul, "class", "results scrollable-container svelte-1rfn8ak");
-    			add_location(ul, file$2, 102, 0, 2234);
+    			attr_dev(ul, "class", "results scrollable-container svelte-hojuff");
+    			add_location(ul, file$2, 105, 0, 2275);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -912,11 +901,9 @@ var app = (function () {
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(ul, null);
     			}
-
-    			/*ul_binding*/ ctx[7](ul);
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*onKeyDown, list, handleSelection, getTitle, getBackgroundColor*/ 11) {
+    			if (dirty & /*onKeyDown, list, handleSelection, getTitle, getBackgroundColor*/ 7) {
     				each_value = /*list*/ ctx[0];
     				let i;
 
@@ -944,7 +931,6 @@ var app = (function () {
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(ul);
     			destroy_each(each_blocks, detaching);
-    			/*ul_binding*/ ctx[7](null);
     		}
     	};
 
@@ -975,18 +961,6 @@ var app = (function () {
     function instance$1($$self, $$props, $$invalidate) {
     	let { list } = $$props;
     	let { handleSelection } = $$props;
-    	let autoscroll;
-    	let div;
-
-    	beforeUpdate(() => {
-    		autoscroll = div && div.offsetHeight + div.scrollTop > div.scrollHeight;
-    	});
-
-    	afterUpdate(() => {
-    		if (autoscroll) {
-    			div.scrollTo(0, div.scrollHeight);
-    		}
-    	});
 
     	function onKeyDown(event, fields) {
     		switch (event.code) {
@@ -1022,38 +996,21 @@ var app = (function () {
     	const keydown_handler = (fields, e) => onKeyDown(e, fields);
     	const click_handler = fields => handleSelection(fields);
 
-    	function ul_binding($$value) {
-    		binding_callbacks[$$value ? "unshift" : "push"](() => {
-    			$$invalidate(2, div = $$value);
-    		});
-    	}
-
     	$$self.$set = $$props => {
     		if ("list" in $$props) $$invalidate(0, list = $$props.list);
     		if ("handleSelection" in $$props) $$invalidate(1, handleSelection = $$props.handleSelection);
     	};
 
     	$$self.$capture_state = () => {
-    		return { list, handleSelection, autoscroll, div };
+    		return { list, handleSelection };
     	};
 
     	$$self.$inject_state = $$props => {
     		if ("list" in $$props) $$invalidate(0, list = $$props.list);
     		if ("handleSelection" in $$props) $$invalidate(1, handleSelection = $$props.handleSelection);
-    		if ("autoscroll" in $$props) autoscroll = $$props.autoscroll;
-    		if ("div" in $$props) $$invalidate(2, div = $$props.div);
     	};
 
-    	return [
-    		list,
-    		handleSelection,
-    		div,
-    		onKeyDown,
-    		autoscroll,
-    		keydown_handler,
-    		click_handler,
-    		ul_binding
-    	];
+    	return [list, handleSelection, onKeyDown, keydown_handler, click_handler];
     }
 
     class List extends SvelteComponentDev {

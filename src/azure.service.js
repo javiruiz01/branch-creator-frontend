@@ -6,23 +6,23 @@ const basicFields = {
   $orderBy: [
     {
       field: 'system.id',
-      sortOrder: 'DESC'
-    }
-  ]
+      sortOrder: 'DESC',
+    },
+  ],
 };
 
 export async function searchAzure(token, searchText) {
   const headers = new Headers({
     'Content-Type': 'application/json',
-    Authorization: `Basic ${btoa(`:${token}`)}`
+    Authorization: `Basic ${btoa(`:${token}`)}`,
   });
 
   const requestOptions = {
     method: 'POST',
     headers,
-    body: JSON.stringify(Object.assign({}, basicFields, { searchText })),
-    redirect: 'follow'
+    body: JSON.stringify({ ...basicFields, searchText }),
+    redirect: 'follow',
   };
 
-  return await fetch(apiUrl, requestOptions).then(res => res.json());
+  return await fetch(apiUrl, requestOptions).then((res) => res.json());
 }

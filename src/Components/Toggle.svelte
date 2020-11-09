@@ -96,7 +96,7 @@
       on:keydown={e => handleKeyDown(e, 'light')}
       on:click={() => switchTheme('light')}
       aria-label="Set light theme">
-      Ligth
+      Light
     </div>
     <div
       class="toggle-dark focusable "

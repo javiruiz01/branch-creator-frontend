@@ -1,42 +1,43 @@
 <script>
-  import { beforeUpdate, afterUpdate } from "svelte";
-  import { getBranchName, workItemTypes } from "../WorkItem";
+  import { beforeUpdate, afterUpdate } from 'svelte';
+  import { getBranchName, workItemTypes } from '../WorkItem';
 
   export let list;
   export let handleSelection;
 
   function focusElementOrDefault(nextSelectableElement) {
     nextSelectableElement =
-      nextSelectableElement || document.body.querySelector("#searchbox");
+      nextSelectableElement || document.body.querySelector('#searchbox');
     nextSelectableElement.focus();
   }
 
-  function getBackgroundColor({ "system.workitemtype": type }) {
-    return workItemTypes[type].color;
+  function getBackgroundColor({ 'system.workitemtype': rawType }) {
+    const type = workItemTypes[rawType];
+    return type == null ? 'black' : type.color;
   }
 
-  function getTitle({ "system.title": title }) {
+  function getTitle({ 'system.title': title }) {
     return title;
   }
 
   function onKeyDown(event, fields) {
     switch (event.code) {
-      case "Space":
-      case "Enter":
+      case 'Space':
+      case 'Enter':
         event.preventDefault();
         handleSelection(fields);
         break;
-      case "ArrowUp":
+      case 'ArrowUp':
         event.preventDefault();
         focusElementOrDefault(event.target.previousSibling);
         break;
-      case "ArrowDown":
+      case 'ArrowDown':
         event.preventDefault();
         focusElementOrDefault(event.target.nextSibling);
         break;
-      case "ShiftLeft":
-      case "ShiftRight":
-      case "Tab":
+      case 'ShiftLeft':
+      case 'ShiftRight':
+      case 'Tab':
         break;
       default:
         event.preventDefault();
@@ -108,13 +109,11 @@
     <li
       class="result result_{i}"
       tabindex="0"
-      on:keydown={e => onKeyDown(e, fields)}
+      on:keydown={(e) => onKeyDown(e, fields)}
       on:click={() => handleSelection(fields)}>
-      <div>
-        <div
-          class="result__icon"
-          style="--backgroundColor:{getBackgroundColor(fields)}" />
-      </div>
+      <div
+        class="result__icon"
+        style="--backgroundColor:{getBackgroundColor(fields)}" />
       <div class="result__title">{getTitle(fields)}</div>
     </li>
   {/each}

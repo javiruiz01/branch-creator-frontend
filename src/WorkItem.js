@@ -11,7 +11,7 @@ export const workItemTypes = {
   Task: { color: 'rgb(242, 203, 29)', type: 'task' },
   'Tech Debt': { color: 'rgb(96, 175, 73)', type: 'techdebt' },
   'Test Case': { color: 'rgb(96, 175, 73)', type: 'testcase' },
-  'User Story': { color: 'rgb(0, 156, 204)', type: 'us' }
+  'User Story': { color: 'rgb(0, 156, 204)', type: 'us' },
 };
 
 export function getBranchName(rawType, id, rawTitle) {
@@ -22,9 +22,17 @@ export function getBranchName(rawType, id, rawTitle) {
     replaceEmptySpaces,
     toLowerCase
   )(rawTitle);
-  const { type } = workItemTypes[rawType];
+  const { type } = workItemTypes[rawType] ?? rawType;
 
+  console.log(getCommitMessage(rawType, id, rawTitle));
   return `${type}/${id}_${title}`.substring(0, 48);
+}
+
+export function getCommitMessage(rawType, id, rawTitle) {
+  const { type } = workItemTypes[rawType] ?? rawType;
+  const title = pipe(replaceAmpersands, trim, toLowerCase)(rawTitle);
+
+  return `${type.toUpperCase()} #${id}: ${title}`;
 }
 
 function replaceAmpersands(title) {
@@ -48,5 +56,5 @@ function toLowerCase(title) {
 }
 
 function pipe(...fns) {
-  return arg => fns.reduce((acc, fn) => fn(acc), arg);
+  return (arg) => fns.reduce((acc, fn) => fn(acc), arg);
 }

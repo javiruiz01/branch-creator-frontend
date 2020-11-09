@@ -1,10 +1,11 @@
 <script>
-  import { token } from "./Store.js";
-  import Footer from "./Components/Footer.svelte";
-  import SearchBoxContainer from "./Pages/SearchBoxContainer.svelte";
-  import Toaster from "./Components/Toaster.svelte";
-  import Toggle from "./Components/Toggle.svelte";
-  import Token from "./Pages/Token.svelte";
+  import { token } from './Store.js';
+  import Footer from './Components/Footer.svelte';
+  import SearchBoxContainer from './Pages/SearchBoxContainer.svelte';
+  import Toaster from './Components/Toaster.svelte';
+  import Toggle from './Components/Toggle.svelte';
+  import Title from './Components/Title.svelte';
+  import Token from './Pages/Token.svelte';
 </script>
 
 <style>
@@ -26,26 +27,12 @@
     position: relative;
     padding-bottom: 40vh;
   }
-
-  .title {
-    justify-self: center;
-    align-self: center;
-    margin-bottom: 1.25rem;
-  }
-
-  .title > h1 {
-    font-size: 1.5rem;
-    font-family: "Fira Code", sans-serif;
-    color: var(--theme-font);
-  }
 </style>
 
 <Toaster />
 <main class="center">
   <div class="container">
-    <div class="title">
-      <h1>Branch creator</h1>
-    </div>
+    <Title />
     {#if $token}
       <SearchBoxContainer />
     {:else}

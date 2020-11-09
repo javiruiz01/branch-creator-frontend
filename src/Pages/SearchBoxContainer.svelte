@@ -1,10 +1,10 @@
 <script>
-  import { getBranchName } from "../WorkItem";
-  import { searchAzure } from "../azure.service";
-  import { token, newBranchName } from "../Store.js";
-  import Input from "../Components/Input.svelte";
-  import List from "../Components/List.svelte";
-  import Loader from "../Components/Loader.svelte";
+  import { getBranchName, getCommitMessage } from '../WorkItem';
+  import { searchAzure } from '../azure.service';
+  import { token, newBranchName, mode } from '../Store.js';
+  import Input from '../Components/Input.svelte';
+  import List from '../Components/List.svelte';
+  import Loader from '../Components/Loader.svelte';
 
   let loading;
   let searchResults = [];
@@ -23,33 +23,38 @@
   }
 
   function handleSelection({
-    "system.workitemtype": type,
-    "system.id": id,
-    "system.title": title
+    'system.workitemtype': type,
+    'system.id': id,
+    'system.title': title,
   }) {
-    copyToClipboard(getBranchName(type, id, title));
+    const name =
+      $mode === 'Branch'
+        ? getBranchName(type, id, title)
+        : getCommitMessage(type, id, title);
+
+    copyToClipboard(name);
   }
 
   function copyToClipboard(branchName) {
     if (navigator.clipboard) {
       navigator.clipboard
         .writeText(branchName)
-        .then(() => newBranchName.update(name => (name = branchName)));
+        .then(() => newBranchName.update((_) => (name = branchName)));
     } else {
-      const listener = e => {
-        e.clipboardData.setData("text/plain", branchName);
+      const listener = (e) => {
+        e.clipboardData.setData('text/plain', branchName);
         e.preventDefault();
       };
-      document.addEventListener("copy", listener, false);
-      document.execCommand("copy");
-      document.removeEventListener("copy", listener, false);
+      document.addEventListener('copy', listener, false);
+      document.execCommand('copy');
+      document.removeEventListener('copy', listener, false);
     }
   }
 
   function handleKeyDown(event) {
-    if (event.code === "ArrowDown") {
+    if (event.code === 'ArrowDown') {
       event.preventDefault();
-      const firstListElement = document.body.querySelector(".result_0");
+      const firstListElement = document.body.querySelector('.result_0');
       if (firstListElement) firstListElement.focus();
     }
   }
